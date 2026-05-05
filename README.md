@@ -28,8 +28,6 @@
 └─────────────────────────────────────────────────┘
 ```
 
-<img align="right" alt="Hacking" width="380" src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif">
-
 ## ```root@guilherme:~$ ls ./tech-stack/```
 
 > ` [+] Decrypting arsenal... `
