@@ -81,14 +81,13 @@
 
 <div align="center">
 
-<a href="https://github.com/MrRobotS0">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=MrRobotS0&show_icons=true&theme=dark&hide_border=true&bg_color=000000&title_color=00FF41&icon_color=00FF41&text_color=00FF41&count_private=true" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=MrRobotS0&layout=compact&theme=dark&hide_border=true&bg_color=000000&title_color=00FF41&text_color=00FF41&langs_count=8" />
-</a>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MrRobotS0&theme=github_dark" />
 
-<br><br>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=MrRobotS0&theme=github_dark" />
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=MrRobotS0&theme=github_dark" />
 
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=MrRobotS0&theme=dark&hide_border=true&background=000000&stroke=00FF41&ring=00FF41&fire=00FF41&currStreakLabel=00FF41&sideLabels=00FF41&dates=00FF41&sideNums=00FF41&currStreakNum=00FF41" />
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=MrRobotS0&theme=github_dark" />
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=MrRobotS0&theme=github_dark&utcOffset=-3" />
 
 </div>
 
