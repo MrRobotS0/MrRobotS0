@@ -6,7 +6,7 @@
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=slice&color=0:00ff41,100:000000&height=220&section=header&text=Guilherme%20Belinelo&fontSize=58&fontColor=ffffff&fontAlignY=42&desc=Full-Stack%20Developer&descAlignY=68&descSize=18&animation=fadeIn" alt="banner" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:00ff41&height=200&section=header&text=Guilherme%20Belinelo&fontSize=58&fontColor=00ff41&fontAlignY=38&desc=Full-Stack%20Developer&descAlignY=60&descSize=16&animation=fadeIn" alt="banner" />
 
 <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=2800&pause=900&color=00FF41&center=true&vCenter=true&width=720&lines=Hello%2C+friend.;Full-Stack+Developer;Building+things%2C+breaking+bugs." alt="typing" />
 
@@ -16,12 +16,6 @@
 <img src="https://img.shields.io/badge/-UTC--3-000000?style=flat-square&logo=clockify&logoColor=00FF41" />
 
 </div>
-
-<br>
-
-## Sobre
-
-Dev full-stack que curte meter a mão tanto no front quanto no back. Gosto de banco bem modelado, código que faz sentido seis meses depois, e debug à meia-noite com música alta.
 
 <br>
 
@@ -38,11 +32,7 @@ Dev full-stack que curte meter a mão tanto no front quanto no back. Gosto de ba
   </tr>
   <tr>
     <td><b>Database</b></td>
-    <td>
-      <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
-      <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
-      <img src="https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" />
-    </td>
+    <td><img src="https://skillicons.dev/icons?i=postgres,mysql" alt="db" />&nbsp;<img src="https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" alt="SQL Server" height="40" /></td>
   </tr>
   <tr>
     <td><b>DevOps</b></td>
