@@ -24,26 +24,84 @@
 <table>
   <tr>
     <td><b>Frontend</b></td>
-    <td><img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs" alt="frontend" /></td>
+    <td>
+      <table>
+        <tr>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="42" height="42" alt="HTML5" /><br>
+            <sub><b>HTML5</b></sub>
+          </td>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="42" height="42" alt="CSS3" /><br>
+            <sub><b>CSS3</b></sub>
+          </td>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="42" height="42" alt="JavaScript" /><br>
+            <sub><b>JavaScript</b></sub>
+          </td>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="42" height="42" alt="TypeScript" /><br>
+            <sub><b>TypeScript</b></sub>
+          </td>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="42" height="42" alt="React" /><br>
+            <sub><b>React</b></sub>
+          </td>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" width="42" height="42" alt="Next.js" /><br>
+            <sub><b>Next.js</b></sub>
+          </td>
+        </tr>
+      </table>
+    </td>
   </tr>
   <tr>
     <td><b>Backend</b></td>
-    <td><img src="https://skillicons.dev/icons?i=nodejs,nestjs,cs,dotnet,python,php" alt="backend" /></td>
+    <td>
+      <table>
+        <tr>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="42" height="42" alt="Node.js" /><br>
+            <sub><b>Node.js</b></sub>
+          </td>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg" width="42" height="42" alt="NestJS" /><br>
+            <sub><b>NestJS</b></sub>
+          </td>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" width="42" height="42" alt="C#" /><br>
+            <sub><b>C#</b></sub>
+          </td>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" width="42" height="42" alt=".NET" /><br>
+            <sub><b>.NET</b></sub>
+          </td>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="42" height="42" alt="Python" /><br>
+            <sub><b>Python</b></sub>
+          </td>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" width="42" height="42" alt="PHP" /><br>
+            <sub><b>PHP</b></sub>
+          </td>
+        </tr>
+      </table>
+    </td>
   </tr>
   <tr>
     <td><b>Database</b></td>
     <td>
       <table>
         <tr>
-          <td align="center" width="90">
+          <td align="center" width="80">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" width="42" height="42" alt="PostgreSQL" /><br>
             <sub><b>PostgreSQL</b></sub>
           </td>
-          <td align="center" width="90">
+          <td align="center" width="80">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="42" height="42" alt="MySQL" /><br>
             <sub><b>MySQL</b></sub>
           </td>
-          <td align="center" width="90">
+          <td align="center" width="80">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" width="42" height="42" alt="SQL Server" /><br>
             <sub><b>SQL Server</b></sub>
           </td>
@@ -53,7 +111,32 @@
   </tr>
   <tr>
     <td><b>DevOps</b></td>
-    <td><img src="https://skillicons.dev/icons?i=docker,linux,git,github,vscode" alt="devops" /></td>
+    <td>
+      <table>
+        <tr>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="42" height="42" alt="Docker" /><br>
+            <sub><b>Docker</b></sub>
+          </td>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="42" height="42" alt="Linux" /><br>
+            <sub><b>Linux</b></sub>
+          </td>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="42" height="42" alt="Git" /><br>
+            <sub><b>Git</b></sub>
+          </td>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="42" height="42" alt="GitHub" /><br>
+            <sub><b>GitHub</b></sub>
+          </td>
+          <td align="center" width="80">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="42" height="42" alt="VS Code" /><br>
+            <sub><b>VS Code</b></sub>
+          </td>
+        </tr>
+      </table>
+    </td>
   </tr>
 </table>
 
