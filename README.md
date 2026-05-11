@@ -32,7 +32,24 @@
   </tr>
   <tr>
     <td><b>Database</b></td>
-    <td><img src="https://skillicons.dev/icons?i=postgres,mysql" alt="db" />&nbsp;<img src="https://custom-icon-badges.demolab.com/badge/SQL%20Server-CC2927?style=for-the-badge&logo=mssqlserver&logoColor=white" alt="SQL Server" height="40" /></td>
+    <td>
+      <table>
+        <tr>
+          <td align="center" width="90">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" width="42" height="42" alt="PostgreSQL" /><br>
+            <sub><b>PostgreSQL</b></sub>
+          </td>
+          <td align="center" width="90">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="42" height="42" alt="MySQL" /><br>
+            <sub><b>MySQL</b></sub>
+          </td>
+          <td align="center" width="90">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" width="42" height="42" alt="SQL Server" /><br>
+            <sub><b>SQL Server</b></sub>
+          </td>
+        </tr>
+      </table>
+    </td>
   </tr>
   <tr>
     <td><b>DevOps</b></td>
