@@ -6,14 +6,14 @@
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:00ff41&height=200&section=header&text=Guilherme%20Belinelo&fontSize=58&fontColor=00ff41&fontAlignY=38&desc=dream%20big&descAlignY=60&descSize=18&animation=fadeIn" alt="banner" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,50:333333,100:000000&height=200&section=header&text=Guilherme%20Belinelo&fontSize=58&fontColor=ffffff&fontAlignY=38&desc=dream%20big&descAlignY=60&descSize=18&animation=fadeIn" alt="banner" />
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=2800&pause=900&color=00FF41&center=true&vCenter=true&width=720&lines=Hello%2C+friend.;Full-Stack+Developer;Building+things%2C+breaking+bugs." alt="typing" />
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=2800&pause=900&color=FFFFFF&center=true&vCenter=true&width=720&lines=Hello%2C+friend.;Full-Stack+Developer;Building+things%2C+breaking+bugs." alt="typing" />
 
 <br>
 
-<img src="https://img.shields.io/badge/-Brasil-000000?style=flat-square&logo=googlemaps&logoColor=00FF41" />
-<img src="https://img.shields.io/badge/-UTC--3-000000?style=flat-square&logo=clockify&logoColor=00FF41" />
+<img src="https://img.shields.io/badge/-Brasil-000000?style=flat-square&logo=googlemaps&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-UTC--3-000000?style=flat-square&logo=clockify&logoColor=ffffff" />
 
 </div>
 
