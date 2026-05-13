@@ -142,6 +142,16 @@
 
 <br>
 
+## Snake
+
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/output/github-contribution-grid-snake-dark.svg" alt="snake" />
+
+</div>
+
+<br>
+
 ## Contato
 
 <p>
