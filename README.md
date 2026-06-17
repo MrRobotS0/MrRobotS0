@@ -136,11 +136,17 @@
 
 > _"Sometimes I dream of saving the world."_ — **Mr. Robot**
 
+<table align="center">
+<tr><td>
+
 ```bash
 guilherme@fsociety:~$ exit
 logout
 Connection to fsociety closed.
 ```
+
+</td></tr>
+</table>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:22C55E,55:064E3B,100:0D1117&height=120&section=footer" alt="footer" />
 
