@@ -91,7 +91,7 @@
 
 <br>
 
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=MrRobotS0&hide_border=true&background=0D1117&stroke=22C55E&ring=22C55E&fire=22C55E&currStreakLabel=22C55E&sideLabels=C9D1D9&dates=8B949E&currStreakNum=F8FAFC&sideNums=F8FAFC" alt="streak" />
+<img src="https://streak-stats.demolab.com/?user=MrRobotS0&hide_border=true&background=0D1117&stroke=22C55E&ring=22C55E&fire=22C55E&currStreakLabel=22C55E&sideLabels=C9D1D9&dates=8B949E&currStreakNum=F8FAFC&sideNums=F8FAFC" alt="streak" />
 
 </div>
 
