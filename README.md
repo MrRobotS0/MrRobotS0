@@ -86,12 +86,8 @@
 
 <div align="center">
 
-<img height="165" src="https://fork-kohl.vercel.app/api?username=MrRobotS0&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&title_color=22C55E&icon_color=22C55E&text_color=C9D1D9&bg_color=0D1117" alt="github stats" />
+<img height="165" src="https://fork-kohl.vercel.app/api?username=MrRobotS0&show_icons=true&include_all_commits=true&count_private=true&hide_rank=true&hide_border=true&title_color=22C55E&icon_color=22C55E&text_color=C9D1D9&bg_color=0D1117" alt="github stats" />
 <img height="165" src="https://fork-kohl.vercel.app/api/top-langs/?username=MrRobotS0&layout=compact&hide_border=true&title_color=22C55E&text_color=C9D1D9&bg_color=0D1117" alt="top languages" />
-
-<br>
-
-<img src="https://streak-stats.demolab.com/?user=MrRobotS0&hide_border=true&background=0D1117&stroke=22C55E&ring=22C55E&fire=22C55E&currStreakLabel=22C55E&sideLabels=C9D1D9&dates=8B949E&currStreakNum=F8FAFC&sideNums=F8FAFC" alt="streak" />
 
 </div>
 
