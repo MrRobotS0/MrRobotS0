@@ -132,7 +132,7 @@
 
 > _"Sometimes I dream of saving the world."_ — **Mr. Robot**
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=16&duration=3000&pause=1200&color=22C55E&center=true&vCenter=true&width=520&height=90&lines=guilherme%40fsociety%3A~%24+exit;logout;Connection+to+fsociety+closed." alt="guilherme@fsociety:~$ exit — Connection to fsociety closed." />
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=16&duration=3000&pause=1200&color=22C55E&center=true&vCenter=true&width=520&height=40&lines=guilherme%40fsociety%3A~%24+exit;logout;Connection+to+fsociety+closed." alt="guilherme@fsociety:~$ exit — Connection to fsociety closed." />
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:22C55E,55:064E3B,100:0D1117&height=120&section=footer" alt="footer" />
 
