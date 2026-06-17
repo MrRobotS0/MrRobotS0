@@ -110,8 +110,6 @@
 
 </div>
 
-<br>
-
 <!-- ════════════════════════════════════════════════════════════════ -->
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=rect&color=0:0D1117,100:22C55E&height=2&width=900&section=header" alt="divider" />
@@ -127,8 +125,6 @@
 <a href="https://mrrobots0.github.io/Portfolio/"><img src="https://img.shields.io/badge/Portfolio-0D1117?style=for-the-badge&logo=vercel&logoColor=22C55E&labelColor=0D1117" alt="Portfolio" /></a>
 
 </div>
-
-<br>
 
 <!-- ════════════════════════════════════════════════════════════════ -->
 
