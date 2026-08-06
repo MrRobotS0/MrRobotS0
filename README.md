@@ -46,8 +46,16 @@
 
 <div align="center">
 
-<img height="165" src="https://github-readme-stats-pi-ten-90.vercel.app/api?username=MrRobotS0&show_icons=true&include_all_commits=true&count_private=true&hide_rank=true&hide_border=true&title_color=22C55E&icon_color=22C55E&text_color=C9D1D9&bg_color=0D1117" alt="github stats" />
-<img height="165" src="https://github-readme-stats-pi-ten-90.vercel.app/api/top-langs/?username=MrRobotS0&hide=html,css,php,javascript&layout=compact&hide_border=true&title_color=22C55E&text_color=C9D1D9&bg_color=0D1117" alt="top languages" />
+<img height="170" src="https://github-readme-stats-pi-ten-90.vercel.app/api?username=MrRobotS0&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&disable_animations=true&rank_icon=github&title_color=22C55E&icon_color=22C55E&text_color=C9D1D9&bg_color=0D1117&ring_color=22C55E&custom_title=guilherme@fsociety%20%C2%B7%20stats" alt="GitHub stats — commits, PRs, issues, contributions" />
+<img height="170" src="https://github-readme-stats-pi-ten-90.vercel.app/api/top-langs/?username=MrRobotS0&hide=html,css,php,javascript&layout=compact&hide_border=true&disable_animations=true&title_color=22C55E&text_color=C9D1D9&bg_color=0D1117&custom_title=most%20used%20languages" alt="Most used languages" />
+
+<br><br>
+
+<img height="180" src="https://streak-stats.demolab.com/?user=MrRobotS0&hide_border=true&disable_animations=true&background=0D1117&stroke=161B22&ring=22C55E&fire=22C55E&currStreakNum=C9D1D9&currStreakLabel=22C55E&sideNums=C9D1D9&sideLabels=C9D1D9&dates=6E7681&excludeDaysLabel=6E7681" alt="Contribution streak — total, current, and longest" />
+
+<br><br>
+
+<img width="820" src="https://github-readme-activity-graph.vercel.app/graph?username=MrRobotS0&bg_color=0D1117&color=22C55E&line=22C55E&point=4ADE80&area=true&area_color=064E3B&hide_border=true&custom_title=contribution%20graph&title_color=22C55E&height=300" alt="Contribution activity graph over the last month" />
 
 </div>
 
