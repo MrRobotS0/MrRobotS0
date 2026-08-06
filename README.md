@@ -87,10 +87,10 @@
 
 <div align="center">
 
-<a href="https://www.linkedin.com/in/guilherme-belinelo-7591b5307/"><img src="https://img.shields.io/badge/LinkedIn-0D1117?style=for-the-badge&logo=linkedin&logoColor=22C55E&labelColor=0D1117" alt="LinkedIn" /></a>
-<a href="https://github.com/MrRobotS0"><img src="https://img.shields.io/badge/GitHub-0D1117?style=for-the-badge&logo=github&logoColor=22C55E&labelColor=0D1117" alt="GitHub" /></a>
-<a href="mailto:guilhermebelinelo@outlook.com"><img src="https://img.shields.io/badge/Email-0D1117?style=for-the-badge&logo=gmail&logoColor=22C55E&labelColor=0D1117" alt="Email" /></a>
-<a href="https://mrrobots0.github.io/Portfolio/"><img src="https://img.shields.io/badge/Portfolio-0D1117?style=for-the-badge&logo=vercel&logoColor=22C55E&labelColor=0D1117" alt="Portfolio" /></a>
+<a href="https://www.linkedin.com/in/guilherme-belinelo-7591b5307/"><img height="46" src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/contact-linkedin.svg" alt="LinkedIn" /></a>&nbsp;
+<a href="https://github.com/MrRobotS0"><img height="46" src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/contact-github.svg" alt="GitHub" /></a>&nbsp;
+<a href="mailto:guilhermebelinelo@outlook.com"><img height="46" src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/contact-email.svg" alt="Email" /></a>&nbsp;
+<a href="https://mrrobots0.github.io/Portfolio/"><img height="46" src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/contact-portfolio.svg" alt="Portfolio" /></a>
 
 </div>
 

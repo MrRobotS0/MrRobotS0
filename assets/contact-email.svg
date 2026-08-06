@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 115 46" width="115" height="46" font-family="'JetBrains Mono','Fira Mono','Courier New',monospace" role="img" aria-label="Email">
+  <defs>
+    <linearGradient id="b" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22C55E" stop-opacity="0.6"/>
+      <stop offset="0.55" stop-color="#064E3B" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#22C55E" stop-opacity="0.2"/>
+    </linearGradient>
+    <style>
+      .pill{opacity:0;animation:in .5s cubic-bezier(.2,.7,.3,1) forwards;animation-delay:0.25s}
+      @keyframes in{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+      @media (prefers-reduced-motion: reduce){.pill{opacity:1 !important;transform:none !important;animation:none !important}}
+    </style>
+  </defs>
+  <g class="pill">
+    <rect x="1" y="1" width="113" height="44" rx="10" fill="#0D1117"/>
+    <rect x="1" y="1" width="113" height="44" rx="10" fill="none" stroke="url(#b)" stroke-width="1.4"/>
+    <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#22C55E" transform="translate(16,12.0) scale(0.91667)"/>
+    <text x="50" y="28" font-size="16" font-weight="600" fill="#22C55E">Email</text>
+  </g>
+</svg>
