@@ -6,11 +6,10 @@
 
 <div align="center">
 
-<!-- ╭──────────────────────────  BANNER  ──────────────────────────╮ -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,45:064E3B,100:22C55E&height=210&section=header&text=Guilherme%20Belinelo&fontSize=56&fontColor=F8FAFC&fontAlignY=38&desc=%3E_%20full-stack%20developer%20%C2%B7%20dream%20big&descAlignY=60&descSize=16&animation=fadeIn" alt="banner" />
-
-<!-- ╭──────────────────────────  TYPING  ──────────────────────────╮ -->
-<a href="#"><img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=2800&pause=900&color=22C55E&center=true&vCenter=true&width=720&lines=Hello%2C+friend.;Full-Stack+Developer;Building+things%2C+breaking+bugs." alt="typing" /></a>
+<!-- ╭────────────────────────  BOOT TERMINAL (animado)  ────────────────────────╮ -->
+<a href="https://github.com/MrRobotS0">
+  <img src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/boot.svg" width="820" alt="guilherme@fsociety:~$ ./fsociety --init — whoami: Guilherme Belinelo, full-stack developer" />
+</a>
 
 <br>
 

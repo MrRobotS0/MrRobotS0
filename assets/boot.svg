@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 609.5" width="820" height="609.5" font-family="'JetBrains Mono','Fira Mono','Courier New',monospace" role="img" aria-label="Terminal fsociety: boot sequence, whoami returns Guilherme Belinelo full-stack developer, then an ASCII fsociety mask is rendered line by line">
+  <defs>
+    <linearGradient id="border" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22C55E" stop-opacity="0.55"/>
+      <stop offset="0.5" stop-color="#064E3B" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#22C55E" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="maskfill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4ADE80"/>
+      <stop offset="1" stop-color="#16A34A"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="0.8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="screen"><rect x="1.5" y="47" width="817" height="561.0"/></clipPath>
+    <style>
+      .win{fill:#0D1117} .bar{fill:#161B22}
+      .prompt{fill:#22C55E;font-weight:700} .dim{fill:#6E7681} .txt{fill:#C9D1D9}
+      .ok{fill:#22C55E;font-weight:700} .warn{fill:#EAB308} .name{fill:#22C55E;font-weight:700}
+      .arrow{fill:#22C55E} .title{fill:#8B949E}
+      .line{clip-path:inset(0 100% 0 0);animation:type .5s steps(30,end) forwards}
+      .mrow{clip-path:inset(0 100% 0 0);animation:type .38s steps(30,end) forwards}
+      @keyframes type{to{clip-path:inset(0 0 0 0)}}
+      .l1{animation-delay:0.25s} .l2{animation-delay:0.7s} .l3{animation-delay:1.15s}
+      .l4{animation-delay:1.55s} .l5{animation-delay:2.0s}
+.mk1{animation-delay:2.400s}
+.mk2{animation-delay:2.470s}
+.mk3{animation-delay:2.540s}
+.mk4{animation-delay:2.610s}
+.mk5{animation-delay:2.680s}
+.mk6{animation-delay:2.750s}
+.mk7{animation-delay:2.820s}
+.mk8{animation-delay:2.890s}
+.mk9{animation-delay:2.960s}
+.mk10{animation-delay:3.030s}
+.mk11{animation-delay:3.100s}
+.mk12{animation-delay:3.170s}
+.mk13{animation-delay:3.240s}
+.mk14{animation-delay:3.310s}
+.mk15{animation-delay:3.380s}
+.mk16{animation-delay:3.450s}
+.mk17{animation-delay:3.520s}
+.mk18{animation-delay:3.590s}
+.mk19{animation-delay:3.660s}
+.mk20{animation-delay:3.730s}
+.mk21{animation-delay:3.800s}
+.mk22{animation-delay:3.870s}
+      .lf{animation-delay:4.12s}
+      .cursor{opacity:0;animation:blink 1.05s steps(1,end) infinite;animation-delay:4.52s}
+      @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+      .scan{opacity:.06;animation:sweep 6s linear infinite}
+      @keyframes sweep{0%{transform:translateY(0)}100%{transform:translateY(609.5px)}}
+      @media (prefers-reduced-motion: reduce){
+        .line,.mrow{clip-path:none !important;animation:none !important}
+        .cursor{opacity:1 !important;animation:none !important} .scan{display:none}
+      }
+    </style>
+  </defs>
+
+  <rect class="win" x="1.5" y="1.5" width="817" height="606.5" rx="14"/>
+  <rect x="1.5" y="1.5" width="817" height="606.5" rx="14" fill="none" stroke="url(#border)" stroke-width="1.5"/>
+
+  <path class="bar" d="M1.5 15.5 A14 14 0 0 1 15.5 1.5 H804.5 A14 14 0 0 1 818.5 15.5 V46 H1.5 Z"/>
+  <line x1="1.5" y1="46" x2="818.5" y2="46" stroke="#22C55E" stroke-opacity="0.18" stroke-width="1"/>
+  <circle cx="28" cy="24" r="6" fill="#FF5F56"/><circle cx="50" cy="24" r="6" fill="#FFBD2E"/><circle cx="72" cy="24" r="6" fill="#27C93F"/>
+  <text class="title" x="410" y="29" font-size="13" text-anchor="middle">guilherme@fsociety: ~ — zsh</text>
+
+  <g clip-path="url(#screen)"><rect class="scan" x="1.5" y="-60" width="817" height="60" fill="#22C55E"/></g>
+
+  <g font-size="16.5" filter="url(#glow)">
+    <g class="line l1"><text x="30" y="84"><tspan class="prompt">guilherme@fsociety</tspan><tspan class="dim">:~$</tspan><tspan class="txt"> ./fsociety --init</tspan></text></g>
+    <g class="line l2"><text x="30" y="112"><tspan class="ok">[ ok ]</tspan><tspan class="dim"> access granted &#183; channel secured &#183; brain mounted</tspan></text></g>
+    <g class="line l3"><text x="30" y="140"><tspan class="prompt">guilherme@fsociety</tspan><tspan class="dim">:~$</tspan><tspan class="txt"> whoami</tspan></text></g>
+    <g class="line l4"><text x="30" y="168"><tspan class="arrow">&#8594; </tspan><tspan class="name">Guilherme Belinelo</tspan><tspan class="dim"> &#183; </tspan><tspan class="txt">full-stack developer</tspan><tspan class="dim"> &#183; </tspan><tspan class="warn">dream big</tspan></text></g>
+    <g class="line l5"><text x="30" y="196"><tspan class="prompt">guilherme@fsociety</tspan><tspan class="dim">:~$</tspan><tspan class="txt"> cat ~/.face</tspan></text></g>
+  </g>
+
+  <g fill="url(#maskfill)" font-size="12.5" filter="url(#glow)">
+    <text class="mrow mk1" x="260.0" y="224.0" xml:space="preserve">             ..░░▒▒▒▒▒▒░░..</text>
+    <text class="mrow mk2" x="260.0" y="239.5" xml:space="preserve">         .░▒▓██████████████▓▒░.</text>
+    <text class="mrow mk3" x="260.0" y="255.0" xml:space="preserve">      .▒▓██████████████████████▓▒.</text>
+    <text class="mrow mk4" x="260.0" y="270.5" xml:space="preserve">     ▒████████████████████████████▒</text>
+    <text class="mrow mk5" x="260.0" y="286.0" xml:space="preserve">  .░▓████▓▒░░░░▓████████▓░░░░▒▓████▓░.</text>
+    <text class="mrow mk6" x="260.0" y="301.5" xml:space="preserve">.▓▓▓█████▒▒▒▒░. .▒████▒. .░▒▒▒▒█████▓▓▓.</text>
+    <text class="mrow mk7" x="260.0" y="317.0" xml:space="preserve">.█▒ .░█████████▒  ▓██▓  ▒█████████░. ▒█.</text>
+    <text class="mrow mk8" x="260.0" y="332.5" xml:space="preserve">.█▒  .█████▓▒░▒██████████▒░▒▓█████.  ▒█.</text>
+    <text class="mrow mk9" x="260.0" y="348.0" xml:space="preserve">.█▒.▒▓████░     ▓██████▓     ░████▓▒.▒█.</text>
+    <text class="mrow mk10" x="260.0" y="363.5" xml:space="preserve"> ░▓███████▓▓▓▓▓▓▓██████▓▓▓▓▓▓▓███████▓░</text>
+    <text class="mrow mk11" x="260.0" y="379.0" xml:space="preserve">  ░██████████████████████████████████░</text>
+    <text class="mrow mk12" x="260.0" y="394.5" xml:space="preserve">   ▒████░▒████████████████████▒░████▒</text>
+    <text class="mrow mk13" x="260.0" y="410.0" xml:space="preserve">    ░██. ▓████▒. .░▓▓░. .▒████▓ .██░</text>
+    <text class="mrow mk14" x="260.0" y="425.5" xml:space="preserve">     █▓   ░▒░.            .░▒░   ▓█</text>
+    <text class="mrow mk15" x="260.0" y="441.0" xml:space="preserve">     ░█▒                        ▒█░</text>
+    <text class="mrow mk16" x="260.0" y="456.5" xml:space="preserve">      ░██▒░░................░░▒██░</text>
+    <text class="mrow mk17" x="260.0" y="472.0" xml:space="preserve">       ▒████████████████████████▒</text>
+    <text class="mrow mk18" x="260.0" y="487.5" xml:space="preserve">        ░▓████████████████████▓░</text>
+    <text class="mrow mk19" x="260.0" y="503.0" xml:space="preserve">          ░▓████████████████▓░</text>
+    <text class="mrow mk20" x="260.0" y="518.5" xml:space="preserve">            .▒████████████▒.</text>
+    <text class="mrow mk21" x="260.0" y="534.0" xml:space="preserve">              ▒▓████████▓▒</text>
+    <text class="mrow mk22" x="260.0" y="549.5" xml:space="preserve">                ........</text>
+  </g>
+
+  <g font-size="16.5" filter="url(#glow)">
+    <g class="line lf"><text x="30" y="579.5"><tspan class="prompt">guilherme@fsociety</tspan><tspan class="dim">:~$</tspan><tspan class="txt"> </tspan></text></g>
+    <rect class="cursor" x="251" y="566.5" width="10" height="17" fill="#22C55E"/>
+  </g>
+</svg>
