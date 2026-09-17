@@ -59,87 +59,23 @@
 
 </div>
 
-<br>
-
-<!-- ════════════════════════════════════════════════════════════════ -->
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:0D1117,100:22C55E&height=2&width=900&section=header" alt="divider" />
-</div>
-
-## `>` Commits × tempo
-
-<div align="center">
-
-<a href="https://mrrobots0.github.io/">
-  <img width="820" src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/commits.svg" alt="Commits por semana desde maio de 2026, contando apenas dias úteis: total do período, média e mediana por dia útil, pico em um dia, dias ativos e streak" />
-</a>
-
-<sub><a href="https://mrrobots0.github.io/"><b>abrir o dashboard interativo</b></a> — filtro livre de datas, dias da semana, granularidade e repositório</sub>
-
-</div>
-
-<!-- Os SVGs abaixo sao pre-renderizados por .github/workflows/commit-stats.yml.
-     O README do GitHub e sanitizado (nada de <script>), entao "filtrar" aqui e
-     escolher um recorte ja renderizado; o filtro de verdade mora no dashboard. -->
-
-<details>
-<summary><b><code>&gt;</code> só dias úteis (seg–sex)</b> — outros períodos</summary>
-<br>
-<div align="center">
-<sub><b>últimos 30 dias</b></sub><br>
-<img width="820" src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/commits-30d-uteis.svg" alt="Commits por dia nos últimos 30 dias, apenas dias úteis, com total, média, mediana, pico e dias ativos" />
-<br><br>
-<sub><b>últimos 90 dias</b></sub><br>
-<img width="820" src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/commits-90d-uteis.svg" alt="Commits por dia nos últimos 90 dias, apenas dias úteis, com total, média, mediana, pico e dias ativos" />
-<br><br>
-<sub><b>últimos 12 meses</b></sub><br>
-<img width="820" src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/commits-365d-uteis.svg" alt="Commits por semana nos últimos 12 meses, apenas dias úteis, com total, média, mediana, pico e dias ativos" />
-<br><br>
-<sub><b>histórico completo</b></sub><br>
-<img width="820" src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/commits-total-uteis.svg" alt="Commits por mês em todo o histórico, apenas dias úteis, com total, média, mediana, pico e dias ativos" />
-</div>
-</details>
-
-<details>
-<summary><b><code>&gt;</code> todos os dias</b> — incluindo fim de semana</summary>
-<br>
-<div align="center">
-<sub><b>desde maio de 2026</b></sub><br>
-<img width="820" src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/commits-desde.svg" alt="Commits por semana desde maio de 2026, todos os dias da semana, com total, média, mediana, pico e dias ativos" />
-<br><br>
-<sub><b>últimos 30 dias</b></sub><br>
-<img width="820" src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/commits-30d.svg" alt="Commits por dia nos últimos 30 dias, todos os dias da semana, com total, média, mediana, pico e dias ativos" />
-<br><br>
-<sub><b>últimos 90 dias</b></sub><br>
-<img width="820" src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/commits-90d.svg" alt="Commits por dia nos últimos 90 dias, todos os dias da semana, com total, média, mediana, pico e dias ativos" />
-<br><br>
-<sub><b>últimos 12 meses</b></sub><br>
-<img width="820" src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/commits-365d.svg" alt="Commits por semana nos últimos 12 meses, todos os dias da semana, com total, média, mediana, pico e dias ativos" />
-<br><br>
-<sub><b>histórico completo</b></sub><br>
-<img width="820" src="https://raw.githubusercontent.com/MrRobotS0/MrRobotS0/main/assets/commits-total.svg" alt="Commits por mês em todo o histórico, todos os dias da semana, com total, média, mediana, pico e dias ativos" />
-</div>
-</details>
-
 <details>
 <summary><b><code>&gt;</code> como esses números são calculados</b></summary>
 <br>
 
-**Média/dia** divide os commits por *todos* os dias do recorte, inclusive os de zero commit — é o ritmo real. O `ativos:` embaixo divide só pelos dias com pelo menos um commit — é a intensidade quando eu sento pra codar.
+**Contribuição** aqui é o que o GitHub conta no quadro verde do perfil: commit, PR, issue e review. Não é sinônimo de commit — um mesmo dia de trabalho costuma render várias contribuições, então o total fica bem acima da contagem de commits. Isso é a definição, não uma divergência. Contribuição em repositório privado entra pela contagem, **nunca pelo nome**.
+
+**Média/dia** divide as contribuições por *todos* os dias do recorte, inclusive os de zero — é o ritmo real. O `ativos:` embaixo divide só pelos dias com pelo menos uma contribuição: é a intensidade quando eu sento pra codar.
 
 **Mediana/dia** é o dia do meio: metade dos dias ficou abaixo dela. Com zeros no meio ela costuma ser baixa, e isso é informação, não erro — média puxada pra cima por um pico e mediana baixa significa "poucos dias muito produtivos".
 
-Com o recorte de **dias úteis**, sábado e domingo saem da conta inteira — inclusive das **streaks**, que passam a contar dias úteis consecutivos.
+A **sequência** são dias seguidos com pelo menos uma contribuição. O dia de hoje não quebra a sequência enquanto não termina — ainda dá tempo. E o calendário fecha no fuso do *perfil* no GitHub, não no meu, então a virada do dia pode não bater com a minha meia-noite.
 
-Commits são atribuídos ao dia no fuso **America/Sao_Paulo** e contam só o branch padrão de cada repositório — a mesma regra do gráfico de contribuições do GitHub. Repositórios privados entram na contagem com o **nome anonimizado**.
-
-**Contribuição não é a mesma coisa que commit.** Os painéis de *sequência* e de *atividade*, lá em cima, leem o calendário de contribuições do GitHub — o mesmo do quadro verde do perfil, que soma commit, PR, issue e review. Por isso o total deles é bem maior que o de commits aqui embaixo: são perguntas diferentes, não uma divergência. Contribuição em repositório privado entra pela contagem, **nunca pelo nome**.
-
-A **sequência** são dias seguidos com pelo menos uma contribuição. O dia de hoje não quebra a sequência enquanto não termina — ainda dá tempo de commitar. E esse calendário é fechado no fuso do *perfil* no GitHub, não em `America/Sao_Paulo`, então ele pode divergir em um dia das contas de commits acima.
-
-Nada disso vem de serviço de terceiro: os dois painéis são renderizados pelo mesmo workflow que gera os gráficos de commits, com o token do próprio repositório. Os serviços prontos que faziam esse papel saíram do ar (um teve o deploy desativado, o outro estoura o limite da API do GitHub e devolve um erro que fica cacheado por horas).
+Nada disso vem de serviço de terceiro: os dois painéis são renderizados por um workflow deste próprio repositório. Os serviços prontos que faziam esse papel saíram do ar — um teve o deploy desativado, o outro estoura o limite da API do GitHub e devolve um erro que fica cacheado por horas.
 
 </details>
+
+<br>
 
 <!-- ════════════════════════════════════════════════════════════════ -->
 <div align="center">
