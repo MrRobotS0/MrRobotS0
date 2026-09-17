@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="'JetBrains Mono','Fira Mono','Courier New',monospace" role="img" aria-label="Sequência de contribuições: sequência atual de 4 dias (14/09 — 17/09/2026), recorde de 5 dias (11/05 — 15/05/2026), 3.491 contribuições desde 16/03/2023 em 98 dias ativos. Abaixo, os últimos 90 dias, um por dia, acesos nos dias com contribuição.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="'JetBrains Mono','Fira Mono','Courier New',monospace" role="img" aria-label="Sequência de contribuições: sequência atual de 4 dias (14/09 — 17/09/2026), recorde de 5 dias (11/05 — 15/05/2026), 3.496 contribuições desde 16/03/2023 em 98 dias ativos. Abaixo, os últimos 90 dias, um por dia, acesos nos dias com contribuição.">
   <defs><linearGradient id="border" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#22C55E" stop-opacity="0.55"/>
       <stop offset="0.5" stop-color="#064E3B" stop-opacity="0.35"/>
@@ -26,7 +26,7 @@
     <text x="220" y="135" font-size="20" font-weight="700" fill="#C9D1D9">5</text>
     <text x="220" y="151" font-size="10" fill="#7B838D">11/05 — 15/05/2026</text>
     <text x="410" y="108" font-size="10.5" letter-spacing="0.6" fill="#8B949E">CONTRIBUIÇÕES</text>
-    <text x="410" y="135" font-size="20" font-weight="700" fill="#C9D1D9">3.491</text>
+    <text x="410" y="135" font-size="20" font-weight="700" fill="#C9D1D9">3.496</text>
     <text x="410" y="151" font-size="10" fill="#7B838D">desde 16/03/2023</text>
     <text x="600" y="108" font-size="10.5" letter-spacing="0.6" fill="#8B949E">DIAS ATIVOS</text>
     <text x="600" y="135" font-size="20" font-weight="700" fill="#C9D1D9">98</text>
