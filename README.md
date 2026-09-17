@@ -59,22 +59,6 @@
 
 </div>
 
-<details>
-<summary><b><code>&gt;</code> como esses números são calculados</b></summary>
-<br>
-
-**Contribuição** aqui é o que o GitHub conta no quadro verde do perfil: commit, PR, issue e review. Não é sinônimo de commit — um mesmo dia de trabalho costuma render várias contribuições, então o total fica bem acima da contagem de commits. Isso é a definição, não uma divergência. Contribuição em repositório privado entra pela contagem, **nunca pelo nome**.
-
-**Média/dia** divide as contribuições por *todos* os dias do recorte, inclusive os de zero — é o ritmo real. O `ativos:` embaixo divide só pelos dias com pelo menos uma contribuição: é a intensidade quando eu sento pra codar.
-
-**Mediana/dia** é o dia do meio: metade dos dias ficou abaixo dela. Com zeros no meio ela costuma ser baixa, e isso é informação, não erro — média puxada pra cima por um pico e mediana baixa significa "poucos dias muito produtivos".
-
-A **sequência** são dias seguidos com pelo menos uma contribuição. O dia de hoje não quebra a sequência enquanto não termina — ainda dá tempo. E o calendário fecha no fuso do *perfil* no GitHub, não no meu, então a virada do dia pode não bater com a minha meia-noite.
-
-Nada disso vem de serviço de terceiro: os dois painéis são renderizados por um workflow deste próprio repositório. Os serviços prontos que faziam esse papel saíram do ar — um teve o deploy desativado, o outro estoura o limite da API do GitHub e devolve um erro que fica cacheado por horas.
-
-</details>
-
 <br>
 
 <!-- ════════════════════════════════════════════════════════════════ -->
