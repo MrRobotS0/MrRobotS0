@@ -1,0 +1,65 @@
+name: Commit stats
+
+on:
+  schedule:
+    # 05:10 UTC = 02:10 em America/Sao_Paulo — o dia anterior ja fechou.
+    - cron: "10 5 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    # So os fontes. Os artefatos gerados (data/, assets/, docs/) ficam de fora
+    # de proposito: e este job que os escreve, e disparar no proprio commit
+    # dele faria o workflow se auto-chamar em loop.
+    paths:
+      - "scripts/**"
+      - ".github/workflows/commit-stats.yml"
+
+concurrency:
+  group: commit-stats
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Coletar commits
+        env:
+          # PAT classico com escopo `repo`. Sem ele o GITHUB_TOKEN entra como
+          # fallback e so enxerga repos publicos — o script avisa e marca
+          # scope:"public" no JSON, entao o README e o dashboard ficam honestos
+          # em vez de mostrar um numero baixo sem explicacao.
+          STATS_TOKEN: ${{ secrets.STATS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          STATS_USER: MrRobotS0
+          STATS_TZ: America/Sao_Paulo
+          # Marco de quando o GitHub passou a ser usado de verdade: vira um
+          # recorte proprio ("desde mai/2026") no README e no dashboard.
+          STATS_ANCHOR: "2026-05-01"
+          # Nomes de repos privados NAO vao pro JSON (que vive em repo publico);
+          # eles entram como "privado #1". Mude pra true se quiser revelar.
+          STATS_REVEAL_PRIVATE: "false"
+        run: node scripts/collect.mjs
+
+      - name: Renderizar paineis e sincronizar o dashboard
+        run: node scripts/build.mjs
+
+      - name: Commitar se mudou
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data assets docs
+          if git diff --staged --quiet; then
+            echo "nada mudou"
+          else
+            git commit -m "stats: atualiza commits x tempo"
+            git push
+          fi

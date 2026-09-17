@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 424" width="820" height="424" font-family="'JetBrains Mono','Fira Mono','Courier New',monospace" role="img" aria-label="Commits por dia — últimos 90 dias, apenas dias úteis: 21 commits em 64 dias úteis, média 0,3 e mediana 0 por dia útil, pico de 7 commits em 07/07/2026, 8 dias ativos (13%), streak atual 0 e recorde 2.">
+  <defs>
+    <linearGradient id="border" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22C55E" stop-opacity="0.55"/>
+      <stop offset="0.5" stop-color="#064E3B" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#22C55E" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="plotclip"><rect x="69" y="200" width="722" height="158"/></clipPath>
+  </defs>
+  <!-- Sem animacao de entrada de proposito: este SVG e consumido como <img> no
+       README, onde um wipe por clip-path CSS pode nunca resolver e deixar o
+       grafico VAZIO. Dado tem que ser legivel no primeiro frame. -->
+
+  <rect x="1.5" y="1.5" width="817" height="421" rx="14" fill="#0D1117"/>
+  <rect x="1.5" y="1.5" width="817" height="421" rx="14" fill="none" stroke="url(#border)" stroke-width="1.5"/>
+  <path d="M1.5 15.5 A14 14 0 0 1 15.5 1.5 H804.5 A14 14 0 0 1 818.5 15.5 V46 H1.5 Z" fill="#161B22"/>
+  <line x1="1.5" y1="46" x2="818.5" y2="46" stroke="#22C55E" stroke-opacity="0.18" stroke-width="1"/>
+  <circle cx="28" cy="24" r="6" fill="#FF5F56"/><circle cx="50" cy="24" r="6" fill="#FFBD2E"/><circle cx="72" cy="24" r="6" fill="#27C93F"/>
+  <text x="410" y="29" font-size="13" fill="#8B949E" text-anchor="middle">guilherme@fsociety: ~/stats — últimos 90 dias · dias úteis</text>
+
+  <text x="30" y="76" font-size="12.5">
+    <tspan fill="#22C55E" font-weight="700">guilherme@fsociety</tspan><tspan fill="#7B838D">:~$</tspan><tspan fill="#C9D1D9"> git log --since=90.days --weekdays=mon-fri | stats</tspan>
+  </text>
+
+  
+    <text x="30" y="108" font-size="10.5" letter-spacing="0.6" fill="#8B949E">COMMITS</text>
+    <text x="30" y="135" font-size="27" font-weight="700" fill="#22C55E">21</text>
+    <text x="30" y="151" font-size="10" fill="#7B838D">em 64 dias úteis</text>
+    <text x="182" y="108" font-size="10.5" letter-spacing="0.6" fill="#8B949E">MÉDIA/DIA ÚTIL</text>
+    <text x="182" y="135" font-size="20" font-weight="700" fill="#C9D1D9">0,3</text>
+    <text x="182" y="151" font-size="10" fill="#7B838D">ativos: 2,6</text>
+    <text x="334" y="108" font-size="10.5" letter-spacing="0.6" fill="#8B949E">MEDIANA/DIA ÚTIL</text>
+    <text x="334" y="135" font-size="20" font-weight="700" fill="#C9D1D9">0</text>
+    <text x="334" y="151" font-size="10" fill="#7B838D">ativos: 1,5</text>
+    <text x="486" y="108" font-size="10.5" letter-spacing="0.6" fill="#8B949E">PICO EM UM DIA</text>
+    <text x="486" y="135" font-size="20" font-weight="700" fill="#C9D1D9">7</text>
+    <text x="486" y="151" font-size="10" fill="#7B838D">07/07/2026</text>
+    <text x="638" y="108" font-size="10.5" letter-spacing="0.6" fill="#8B949E">DIAS ATIVOS</text>
+    <text x="638" y="135" font-size="20" font-weight="700" fill="#C9D1D9">8</text>
+    <text x="638" y="151" font-size="10" fill="#7B838D">13% · streak 0</text>
+
+  <line x1="30" y1="188" x2="790" y2="188" stroke="#1F2630" stroke-width="1"/>
+  <text x="30" y="208" font-size="11" fill="#8B949E">commits por dia</text>
+  
+    <line x1="556.2" y1="204.5" x2="574.2" y2="204.5" stroke="#38BDF8" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="580.2" y="208" font-size="10.5" fill="#8B949E">média/dia 0,3</text>
+    <line x1="684.1" y1="204.5" x2="702.1" y2="204.5" stroke="#F472B6" stroke-width="2" stroke-dasharray="2 3"/>
+    <text x="708.1" y="208" font-size="10.5" fill="#8B949E">mediana/dia 0</text>
+
+  <g><line x1="70" y1="356" x2="790" y2="356" stroke="#7B838D" stroke-width="1" stroke-opacity="0.5"/><text x="60" y="359.5" font-size="10" fill="#7B838D" text-anchor="end" style="font-variant-numeric:tabular-nums">0</text><line x1="70" y1="323" x2="790" y2="323" stroke="#1F2630" stroke-width="1" /><text x="60" y="326.5" font-size="10" fill="#7B838D" text-anchor="end" style="font-variant-numeric:tabular-nums">2</text><line x1="70" y1="290" x2="790" y2="290" stroke="#1F2630" stroke-width="1" /><text x="60" y="293.5" font-size="10" fill="#7B838D" text-anchor="end" style="font-variant-numeric:tabular-nums">4</text><line x1="70" y1="257" x2="790" y2="257" stroke="#1F2630" stroke-width="1" /><text x="60" y="260.5" font-size="10" fill="#7B838D" text-anchor="end" style="font-variant-numeric:tabular-nums">6</text><line x1="70" y1="224" x2="790" y2="224" stroke="#1F2630" stroke-width="1" /><text x="60" y="227.5" font-size="10" fill="#7B838D" text-anchor="end" style="font-variant-numeric:tabular-nums">8</text></g>
+  <g clip-path="url(#plotclip)"><path d="M183.5 356V310.5a4 4 0 0 1 4 -4h1.3a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M194.8 356V244.5a4 4 0 0 1 4 -4h1.3a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M284.8 356V343.5a4 4 0 0 1 4 -4h1.3a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M374.8 356V343.5a4 4 0 0 1 4 -4h1.3a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M386 356V343.5a4 4 0 0 1 4 -4h1.3a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M442.3 356V277.5a4 4 0 0 1 4 -4h1.3a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M521 356V327a4 4 0 0 1 4 -4h1.3a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M532.3 356V343.5a4 4 0 0 1 4 -4h1.3a4 4 0 0 1 4 4V356Z" fill="#22C55E"/></g>
+  <g><line x1="70" y1="350.6" x2="790" y2="350.6" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="6 4"/><line x1="70" y1="356" x2="790" y2="356" stroke="#F472B6" stroke-width="1.5" stroke-dasharray="2 3"/></g>
+  <g><text x="75.6" y="374" font-size="10" fill="#7B838D" text-anchor="middle">22/06</text><text x="165.6" y="374" font-size="10" fill="#7B838D" text-anchor="middle">02/07</text><text x="255.6" y="374" font-size="10" fill="#7B838D" text-anchor="middle">14/07</text><text x="345.6" y="374" font-size="10" fill="#7B838D" text-anchor="middle">24/07</text><text x="435.6" y="374" font-size="10" fill="#7B838D" text-anchor="middle">05/08</text><text x="525.6" y="374" font-size="10" fill="#7B838D" text-anchor="middle">17/08</text><text x="615.6" y="374" font-size="10" fill="#7B838D" text-anchor="middle">27/08</text><text x="705.6" y="374" font-size="10" fill="#7B838D" text-anchor="middle">08/09</text></g>
+
+  <text x="30" y="406" font-size="10" fill="#7B838D">dias úteis (seg–sex)  ·  agrupado por dia  ·  só públicos · 3.427 privados fora  ·  melhor sequência 2</text>
+</svg>

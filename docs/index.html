@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>commits · guilherme@fsociety</title>
+<meta name="description" content="Commits ao longo do tempo com filtro de período, dias da semana e repositório — total, média e mediana.">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+  /* ── tokens ──────────────────────────────────────────────────────────────
+     Superficie e marca herdadas do README (fsociety). As tres cores de dado
+     foram validadas contra #0D1117: chroma, separacao CVD (dE 10.4 adjacente),
+     piso de visao normal e contraste >= 3:1. */
+  :root {
+    --bg: #0D1117;
+    --panel: #0F1520;
+    --bar: #161B22;
+    --line: #1F2630;
+    --ink: #C9D1D9;
+    --dim: #8B949E;
+    --muted: #6E7681;
+    --data: #22C55E;
+    --data-soft: rgba(34, 197, 94, 0.12);
+    --mean: #38BDF8;
+    --median: #F472B6;
+    --focus: #4ADE80;
+    --radius: 12px;
+    --gap: 16px;
+    --mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 14px/1.55 var(--mono);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 24px 16px 64px; }
+
+  a { color: var(--data); }
+  a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* ── chrome de terminal ─────────────────────────────────────────────── */
+  .term {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--panel);
+    overflow: hidden;
+  }
+  .term > header {
+    background: var(--bar);
+    border-bottom: 1px solid var(--line);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+  .term > header .title {
+    flex: 1; text-align: center; color: var(--dim); font-size: 12.5px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .term > .body { padding: 18px; }
+
+  h1 { font-size: 19px; margin: 0 0 4px; font-weight: 700; }
+  h1 .p { color: var(--data); }
+  h1 .d { color: var(--muted); }
+  .sub { color: var(--muted); font-size: 12px; margin: 0; }
+  h2 { font-size: 13px; font-weight: 500; color: var(--dim); margin: 0; }
+
+  /* ── filtros: uma linha acima de tudo que eles filtram ───────────────── */
+  .filters {
+    display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: flex-end;
+    margin: 20px 0 18px; padding: 14px 16px;
+    border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel);
+  }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field > .label { font-size: 10.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase; }
+  .row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+
+  .chip {
+    font: inherit; font-size: 12px;
+    background: transparent; color: var(--dim);
+    border: 1px solid var(--line); border-radius: 6px;
+    padding: 7px 11px; min-height: 34px; cursor: pointer;
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .chip:hover { background: #161d27; color: var(--ink); }
+  .chip[aria-pressed="true"], .chip[aria-checked="true"] {
+    color: var(--data); border-color: rgba(34,197,94,.55); background: var(--data-soft);
+  }
+  .chip.day { min-width: 38px; padding: 7px 6px; text-align: center; }
+
+  input[type="date"] {
+    font: inherit; font-size: 12px; color: var(--ink);
+    background: var(--bg); border: 1px solid var(--line); border-radius: 6px;
+    padding: 6px 8px; min-height: 34px; color-scheme: dark;
+  }
+
+  details.repos { position: relative; }
+  details.repos > summary {
+    list-style: none; cursor: pointer;
+    font-size: 12px; color: var(--dim);
+    border: 1px solid var(--line); border-radius: 6px; padding: 7px 11px; min-height: 34px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  details.repos > summary::-webkit-details-marker { display: none; }
+  details.repos > summary::after { content: '▾'; color: var(--muted); }
+  details.repos[open] > summary { color: var(--ink); border-color: rgba(34,197,94,.4); }
+  .repo-menu {
+    position: absolute; z-index: 30; top: calc(100% + 6px); left: 0; min-width: 280px;
+    background: var(--bar); border: 1px solid var(--line); border-radius: 8px;
+    padding: 8px; box-shadow: 0 12px 32px rgba(0,0,0,.55);
+    max-height: 300px; overflow: auto;
+  }
+  .repo-menu label {
+    display: flex; gap: 9px; align-items: center; padding: 7px 8px; border-radius: 6px;
+    font-size: 12px; color: var(--dim); cursor: pointer; min-height: 34px;
+  }
+  .repo-menu label:hover { background: #1b2430; color: var(--ink); }
+  .repo-menu input { accent-color: var(--data); width: 15px; height: 15px; }
+  .repo-menu .count { margin-left: auto; color: var(--muted); font-size: 11px; }
+  .repo-menu .divider { height: 1px; background: var(--line); margin: 6px 4px; }
+
+  /* ── KPIs ────────────────────────────────────────────────────────────── */
+  /* Flex, nao grid: com grid a ultima fila deixa celulas vazias e o fundo do
+     container (a cor das divisorias) aparece como um buraco. No flex os tiles
+     da ultima fila crescem e preenchem a largura. */
+  .kpis {
+    display: flex; flex-wrap: wrap; gap: 1px; background: var(--line);
+    border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  }
+  .kpi { flex: 1 1 150px; background: var(--panel); padding: 14px 16px; }
+  .kpi .label { font-size: 10.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase; }
+  .kpi .value { font-size: 25px; font-weight: 700; line-height: 1.25; margin-top: 2px; }
+  .kpi.hero .value { color: var(--data); font-size: 30px; }
+  .kpi .note { font-size: 11px; color: var(--muted); }
+
+  /* ── graficos ────────────────────────────────────────────────────────── */
+  .card { margin-top: var(--gap); }
+  .card > .body { padding: 16px 18px 8px; }
+  .chart-head { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: baseline; justify-content: space-between; }
+  .keys { display: flex; gap: 16px; flex-wrap: wrap; font-size: 11.5px; color: var(--dim); }
+  .keys span { display: inline-flex; align-items: center; gap: 7px; }
+  .keys i { width: 20px; height: 0; border-top-width: 2px; border-top-style: dashed; display: inline-block; }
+  .keys .k-mean i { border-color: var(--mean); }
+  .keys .k-median i { border-color: var(--median); border-top-style: dotted; border-top-width: 3px; }
+  .keys .k-data i { border-top-style: solid; border-color: var(--data); border-top-width: 8px; width: 12px; border-radius: 2px; }
+
+  .plot { position: relative; margin-top: 10px; }
+  .plot svg { display: block; width: 100%; height: auto; }
+  .plot:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; border-radius: 6px; }
+
+  .tip {
+    position: absolute; pointer-events: none; z-index: 10;
+    background: var(--bar); border: 1px solid var(--line); border-radius: 8px;
+    padding: 9px 11px; font-size: 12px; min-width: 130px;
+    box-shadow: 0 10px 26px rgba(0,0,0,.6);
+    opacity: 0; transition: opacity .12s ease;
+  }
+  .tip[data-open="true"] { opacity: 1; }
+  .tip .t-when { color: var(--muted); font-size: 11px; }
+  .tip .t-value { font-size: 17px; font-weight: 700; }
+  .tip .t-row { display: flex; align-items: center; gap: 8px; color: var(--dim); font-size: 11.5px; }
+  .tip .t-row b { color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; }
+  .tip .t-key { width: 12px; height: 2px; border-radius: 2px; flex: none; }
+
+  .empty { padding: 44px 0; text-align: center; color: var(--muted); font-size: 13px; }
+
+  /* ── tabela ──────────────────────────────────────────────────────────── */
+  .table-wrap { max-height: 340px; overflow: auto; border-top: 1px solid var(--line); }
+  table { border-collapse: collapse; width: 100%; font-size: 12px; }
+  th, td { padding: 7px 10px; text-align: right; white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  thead th {
+    position: sticky; top: 0; background: var(--bar); color: var(--dim);
+    font-weight: 500; font-size: 11px; z-index: 1;
+    border-bottom: 1px solid var(--line);
+  }
+  tbody td { border-bottom: 1px solid rgba(31,38,48,.55); font-variant-numeric: tabular-nums; color: var(--dim); }
+  tbody td:nth-child(2) { color: var(--ink); }
+
+  .method { margin-top: var(--gap); color: var(--muted); font-size: 11.5px; line-height: 1.7; }
+  .method b { color: var(--dim); font-weight: 500; }
+  .warn {
+    margin-top: var(--gap); padding: 12px 14px; font-size: 12px;
+    border: 1px solid rgba(234,179,8,.35); border-left-width: 3px;
+    border-radius: 8px; background: rgba(234,179,8,.06); color: #EAB308;
+  }
+
+  @media (max-width: 640px) {
+    .term > .body, .card > .body { padding: 14px; }
+    .kpi .value { font-size: 22px; }
+    .kpi.hero .value { font-size: 26px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <section class="term">
+    <header>
+      <span class="dot" style="background:#FF5F56"></span>
+      <span class="dot" style="background:#FFBD2E"></span>
+      <span class="dot" style="background:#27C93F"></span>
+      <span class="title">guilherme@fsociety: ~/stats — commits</span>
+    </header>
+    <div class="body">
+      <h1><span class="p">guilherme@fsociety</span><span class="d">:~$</span> git log --stats</h1>
+      <p class="sub" id="meta">carregando…</p>
+    </div>
+  </section>
+
+  <div id="warn" hidden></div>
+
+  <!-- Uma linha de filtros, acima de tudo que eles filtram: todo numero da
+       pagina responde ao mesmo recorte. -->
+  <section class="filters" role="group" aria-label="Filtros">
+    <div class="field">
+      <span class="label" id="lb-period">Período</span>
+      <div class="row" role="group" aria-labelledby="lb-period" id="periods"></div>
+    </div>
+
+    <div class="field">
+      <span class="label" id="lb-custom">Intervalo</span>
+      <div class="row" aria-labelledby="lb-custom">
+        <input type="date" id="from" aria-label="Data inicial">
+        <span style="color:var(--muted)">→</span>
+        <input type="date" id="to" aria-label="Data final">
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="label" id="lb-days">Dias da semana</span>
+      <div class="row" role="group" aria-labelledby="lb-days" id="weekdays"></div>
+    </div>
+
+    <div class="field">
+      <span class="label" id="lb-gran">Agrupar por</span>
+      <div class="row" role="group" aria-labelledby="lb-gran" id="granularity"></div>
+    </div>
+
+    <div class="field">
+      <span class="label">Repositórios</span>
+      <details class="repos" id="repos">
+        <summary id="repo-summary">todos</summary>
+        <div class="repo-menu" id="repo-menu"></div>
+      </details>
+    </div>
+  </section>
+
+  <section class="kpis" id="kpis" aria-live="polite"></section>
+
+  <section class="term card">
+    <div class="body">
+      <div class="chart-head">
+        <h2 id="chart-title">commits por dia</h2>
+        <div class="keys" id="keys"></div>
+      </div>
+      <div class="plot" id="plot" tabindex="0" role="img" aria-label="gráfico de commits">
+        <div class="tip" id="tip" role="status" aria-live="off"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="term card">
+    <div class="body">
+      <div class="chart-head">
+        <h2>média de commits por dia da semana</h2>
+      </div>
+      <div class="plot" id="weekplot"></div>
+    </div>
+  </section>
+
+  <section class="term card">
+    <header>
+      <span class="title" style="text-align:left">tabela — mesmos dados, sem depender de cor ou hover</span>
+      <button class="chip" id="csv" type="button">baixar CSV</button>
+    </header>
+    <div class="table-wrap">
+      <table id="table">
+        <thead><tr><th>período</th><th>commits</th><th>dias no filtro</th><th>média/dia</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <p class="method">
+    <b>Como os números são calculados.</b>
+    <b>Média/dia</b> divide os commits por <i>todos</i> os dias do filtro, inclusive os de zero commit — é o ritmo real.
+    <b>Nos dias ativos</b> divide só pelos dias com pelo menos um commit — é a intensidade quando você senta pra codar.
+    A <b>mediana</b> é o dia do meio: metade dos dias ficou abaixo dela. Com zeros no meio ela costuma ser baixa, e isso é informação, não erro.
+    Com o filtro de dias úteis, sábado e domingo somem da conta inteira — inclusive das <b>streaks</b>, que passam a contar dias úteis consecutivos.
+    Commits são atribuídos ao dia no fuso <span id="tz">America/Sao_Paulo</span> e contam só o branch padrão de cada repositório (mesma regra do gráfico de contribuições do GitHub).
+  </p>
+
+</div>
+
+<script type="module">
+import { analyze, bucketLabel, unitLabel, fmt, WEEKDAY_LABELS, MONTH_LABELS, shiftDay, daysBetween } from './stats.mjs';
+
+/** '2026-05-01' -> 'mai/2026' (ano cheio: é rótulo de preset, não de eixo). */
+const monthYear = (day) => `${MONTH_LABELS[Number(day.slice(5, 7)) - 1]}/${day.slice(0, 4)}`;
+
+const C = {
+  data: '#22C55E', mean: '#38BDF8', median: '#F472B6',
+  grid: '#1F2630', muted: '#6E7681', dim: '#8B949E', ink: '#C9D1D9', surface: '#0D1117',
+};
+
+const $ = (sel) => document.querySelector(sel);
+const el = (tag, props = {}, kids = []) => {
+  const node = Object.assign(document.createElement(tag), props);
+  for (const k of [].concat(kids)) node.append(k);
+  return node;
+};
+const svgEl = (tag, attrs = {}) => {
+  const node = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [k, v] of Object.entries(attrs)) node.setAttribute(k, v);
+  return node;
+};
+
+/**
+ * Presets de período. O recorte "desde <mês>" vem de data.anchor (env
+ * STATS_ANCHOR na coleta) — é o marco de quando o GitHub passou a ser usado de
+ * verdade; sem ele, média e mediana do histórico completo ficam diluídas pelos
+ * meses vazios. É inserido em init(), quando os dados já estão carregados.
+ */
+const PERIODS = [
+  { id: '30d', label: '30 dias', days: 30, granularity: 'day' },
+  { id: '90d', label: '90 dias', days: 90, granularity: 'day' },
+  { id: '365d', label: '12 meses', days: 365, granularity: 'week' },
+  { id: 'total', label: 'tudo', days: null, granularity: 'month' },
+];
+
+const state = {
+  data: null,
+  period: '90d',
+  from: null,
+  to: null,
+  weekdays: new Set([0, 1, 2, 3, 4, 5, 6]),
+  granularity: 'day',
+  repos: new Set(),
+  hover: -1,
+};
+
+/* ── boot ───────────────────────────────────────────────────────────────── */
+init();
+
+async function init() {
+  let data;
+  try {
+    const res = await fetch('./commits.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error(String(res.status));
+    data = await res.json();
+  } catch (err) {
+    $('#meta').textContent = 'não consegui carregar commits.json — rode o workflow "commit stats" no repositório.';
+    return;
+  }
+  state.data = data;
+  state.repos = new Set(data.repos.map((r) => r.key));
+  $('#tz').textContent = data.timezone;
+
+  $('#meta').textContent =
+    `${fmt.int(data.totalCommits)} commits · ${data.repos.length} repositórios · `
+    + `${data.scope === 'all' ? 'públicos + privados' : 'apenas públicos'} · `
+    + `atualizado ${fmt.day(data.lastDay)}`;
+
+  if (data.scope !== 'all') {
+    const box = $('#warn');
+    box.hidden = false;
+    box.className = 'warn';
+    box.textContent = data.hiddenRestrictedContributions
+      ? `Rodando sem PAT: repositórios privados estão fora destes números (a API reporta ${fmt.int(data.hiddenRestrictedContributions)} contribuições privadas não contabilizadas). Configure o secret STATS_TOKEN.`
+      : 'Rodando sem PAT: repositórios privados estão fora destes números. Configure o secret STATS_TOKEN.';
+  }
+
+  if (data.anchor) {
+    const span = daysBetween(data.anchor, data.lastDay);
+    PERIODS.splice(3, 0, {
+      id: 'desde',
+      label: `desde ${monthYear(data.anchor)}`,
+      from: data.anchor,
+      days: null,
+      granularity: span <= 92 ? 'day' : span <= 400 ? 'week' : 'month',
+    });
+  }
+
+  buildControls();
+  // Abre no recorte ancorado + dias úteis: é o ritmo de trabalho real.
+  if (data.anchor) state.weekdays = new Set([1, 2, 3, 4, 5]);
+  applyPeriod(data.anchor ? 'desde' : '90d');
+}
+
+/* ── controles ──────────────────────────────────────────────────────────── */
+function buildControls() {
+  const periods = $('#periods');
+  for (const p of PERIODS) {
+    periods.append(el('button', {
+      className: 'chip', type: 'button', textContent: p.label,
+      onclick: () => applyPeriod(p.id),
+    }, []));
+  }
+
+  const days = $('#weekdays');
+  // Ordem seg→dom: é como se lê semana de trabalho.
+  for (const wd of [1, 2, 3, 4, 5, 6, 0]) {
+    days.append(el('button', {
+      className: 'chip day', type: 'button', textContent: WEEKDAY_LABELS[wd],
+      title: WEEKDAY_LABELS[wd],
+      onclick: () => {
+        if (state.weekdays.has(wd)) { if (state.weekdays.size > 1) state.weekdays.delete(wd); }
+        else state.weekdays.add(wd);
+        render();
+      },
+    }));
+  }
+  days.append(el('button', {
+    className: 'chip', type: 'button', textContent: 'só úteis',
+    onclick: () => { state.weekdays = new Set([1, 2, 3, 4, 5]); render(); },
+  }));
+  days.append(el('button', {
+    className: 'chip', type: 'button', textContent: 'todos',
+    onclick: () => { state.weekdays = new Set([0, 1, 2, 3, 4, 5, 6]); render(); },
+  }));
+
+  const gran = $('#granularity');
+  for (const [id, label] of [['day', 'dia'], ['week', 'semana'], ['month', 'mês']]) {
+    gran.append(el('button', {
+      className: 'chip', type: 'button', textContent: label,
+      onclick: () => { state.granularity = id; render(); },
+    }));
+  }
+
+  const menu = $('#repo-menu');
+  menu.append(el('label', {}, [
+    el('input', { type: 'checkbox', checked: true, onchange: (e) => {
+      state.repos = e.target.checked ? new Set(state.data.repos.map((r) => r.key)) : new Set();
+      buildRepoChecks();
+      render();
+    } }),
+    el('span', { textContent: 'todos' }),
+  ]));
+  menu.append(el('div', { className: 'divider' }));
+  menu.append(el('div', { id: 'repo-list' }));
+  buildRepoChecks();
+
+  for (const id of ['#from', '#to']) {
+    $(id).min = state.data.firstDay;
+    $(id).max = state.data.lastDay;
+    $(id).addEventListener('change', () => {
+      const from = $('#from').value || state.data.firstDay;
+      const to = $('#to').value || state.data.lastDay;
+      if (from > to) return;
+      state.from = from; state.to = to; state.period = 'custom';
+      render();
+    });
+  }
+
+  $('#csv').addEventListener('click', downloadCsv);
+  wirePlotKeyboard();
+  addEventListener('resize', debounce(render, 120));
+}
+
+function buildRepoChecks() {
+  const list = $('#repo-list');
+  list.textContent = '';
+  for (const repo of state.data.repos) {
+    list.append(el('label', {}, [
+      el('input', {
+        type: 'checkbox', checked: state.repos.has(repo.key),
+        onchange: (e) => {
+          if (e.target.checked) state.repos.add(repo.key); else state.repos.delete(repo.key);
+          if (!state.repos.size) { state.repos.add(repo.key); e.target.checked = true; }
+          render();
+        },
+      }),
+      el('span', { textContent: repo.label }),
+      el('span', { className: 'count', textContent: fmt.int(repo.commits) }),
+    ]));
+  }
+}
+
+function applyPeriod(id) {
+  const p = PERIODS.find((x) => x.id === id);
+  state.period = id;
+  state.granularity = p.granularity;
+  state.to = state.data.lastDay;
+  state.from = p.from
+    || (p.days ? maxDay(shiftDay(state.to, -(p.days - 1)), state.data.firstDay) : state.data.firstDay);
+  $('#from').value = state.from;
+  $('#to').value = state.to;
+  render();
+}
+
+const maxDay = (a, b) => (a > b ? a : b);
+const debounce = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
+
+/* ── render ─────────────────────────────────────────────────────────────── */
+let current = null;
+
+function render() {
+  syncPressed();
+  const a = analyze(state.data, {
+    from: state.from, to: state.to,
+    weekdays: [...state.weekdays],
+    granularity: state.granularity,
+    repos: [...state.repos],
+  });
+  current = a;
+  state.hover = -1;
+  renderKpis(a);
+  renderKeys(a);
+  renderChart(a);
+  renderWeekdays(a);
+  renderTable(a);
+}
+
+function syncPressed() {
+  const chips = $('#periods').children;
+  PERIODS.forEach((p, i) => chips[i].setAttribute('aria-pressed', String(state.period === p.id)));
+  const days = $('#weekdays').children;
+  [1, 2, 3, 4, 5, 6, 0].forEach((wd, i) => days[i].setAttribute('aria-pressed', String(state.weekdays.has(wd))));
+  const gran = $('#granularity').children;
+  ['day', 'week', 'month'].forEach((g, i) => gran[i].setAttribute('aria-pressed', String(state.granularity === g)));
+
+  const all = state.repos.size === state.data.repos.length;
+  $('#repo-summary').textContent = all
+    ? 'todos'
+    : `${state.repos.size} de ${state.data.repos.length}`;
+}
+
+const businessOnly = () => state.weekdays.size === 5 && [1, 2, 3, 4, 5].every((d) => state.weekdays.has(d));
+const unitName = () => (businessOnly() ? 'dia útil' : 'dia');
+const unitNamePlural = () => (businessOnly() ? 'dias úteis' : 'dias');
+
+function renderKpis(a) {
+  const pct = a.daysInRange ? Math.round((a.activeDays / a.daysInRange) * 100) : 0;
+  const tiles = [
+    { label: 'commits no período', value: fmt.int(a.total), note: `em ${fmt.int(a.daysInRange)} ${unitNamePlural()}`, hero: true },
+    { label: `média / ${unitName()}`, value: fmt.num(a.perDay.mean), note: `${fmt.num(a.perActive.mean)} nos dias ativos` },
+    { label: `mediana / ${unitName()}`, value: fmt.num(a.perDay.median), note: `${fmt.num(a.perActive.median)} nos dias ativos` },
+    { label: 'pico em um dia', value: a.peak ? fmt.int(a.peak.n) : '0', note: a.peak && a.peak.n ? fmt.day(a.peak.day) : '—' },
+    { label: 'dias ativos', value: fmt.int(a.activeDays), note: `${pct}% do período` },
+    { label: 'streak', value: fmt.int(a.streaks.current), note: `recorde ${fmt.int(a.streaks.longest)}` },
+  ];
+  const box = $('#kpis');
+  box.textContent = '';
+  for (const t of tiles) {
+    box.append(el('div', { className: `kpi${t.hero ? ' hero' : ''}` }, [
+      el('div', { className: 'label', textContent: t.label }),
+      el('div', { className: 'value', textContent: t.value }),
+      el('div', { className: 'note', textContent: t.note }),
+    ]));
+  }
+}
+
+const bucketName = (g) => (g === 'week' ? 'semana' : g === 'month' ? 'mês' : 'dia');
+
+function renderKeys(a) {
+  const u = unitLabel(a.granularity);
+  $('#chart-title').textContent = `commits por ${bucketName(a.granularity)}`;
+  const keys = $('#keys');
+  keys.textContent = '';
+  keys.append(el('span', { className: 'k-data' }, [el('i'), el('span', { textContent: 'commits' })]));
+  keys.append(el('span', { className: 'k-mean' }, [el('i'), el('span', { textContent: `média/${u} ${fmt.num(a.perBucket.mean)}` })]));
+  keys.append(el('span', { className: 'k-median' }, [el('i'), el('span', { textContent: `mediana/${u} ${fmt.num(a.perBucket.median)}` })]));
+}
+
+function niceScale(max, ticks = 4) {
+  if (max <= 0) return { max: 1, step: 1 };
+  const raw = max / ticks;
+  const mag = 10 ** Math.floor(Math.log10(raw));
+  const step = [1, 2, 2.5, 3, 4, 5, 10].map((m) => m * mag).find((s) => s >= raw) || 10 * mag;
+  return { max: Math.ceil(max / step) * step, step };
+}
+
+function barPath(x, y, w, h, r = 4) {
+  const rr = Math.min(r, w / 2, h);
+  if (rr <= 0.5) return `M${x} ${y + h}h${w}v${-h}h${-w}Z`;
+  return `M${x} ${y + h}V${y + rr}a${rr} ${rr} 0 0 1 ${rr} ${-rr}h${w - 2 * rr}a${rr} ${rr} 0 0 1 ${rr} ${rr}V${y + h}Z`;
+}
+
+const geom = { left: 46, right: 12, top: 14, bottom: 30, height: 260, band: 0, count: 0, width: 0 };
+
+function renderChart(a) {
+  const host = $('#plot');
+  [...host.querySelectorAll('svg')].forEach((n) => n.remove());
+  host.querySelector('.empty')?.remove();
+
+  const W = Math.max(320, host.clientWidth || 800);
+  const H = geom.height;
+  const plotW = W - geom.left - geom.right;
+  const plotH = H - geom.top - geom.bottom;
+  const baseline = geom.top + plotH;
+
+  host.setAttribute('aria-label',
+    `Commits por ${bucketName(a.granularity)} de ${fmt.day(a.from)} a ${fmt.day(a.to)}: `
+    + `${fmt.int(a.total)} commits, média ${fmt.num(a.perDay.mean)} e mediana ${fmt.num(a.perDay.median)} por ${unitName()}.`);
+
+  if (!a.buckets.length || a.total === 0) {
+    host.append(el('p', { className: 'empty', textContent: 'nenhum commit nesse recorte — solte um filtro ou amplie o período.' }));
+    Object.assign(geom, { count: 0 });
+    return;
+  }
+
+  const scale = niceScale(a.perBucket.max);
+  const yOf = (v) => geom.top + plotH - (v / scale.max) * plotH;
+  const band = plotW / a.buckets.length;
+  Object.assign(geom, { band, count: a.buckets.length, width: W, baseline, plotW });
+
+  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'presentation', 'aria-hidden': 'true' });
+
+  // grid + eixo Y
+  for (let v = 0; v <= scale.max + 1e-9; v += scale.step) {
+    const y = yOf(v);
+    svg.append(svgEl('line', {
+      x1: geom.left, y1: y, x2: W - geom.right, y2: y,
+      stroke: v === 0 ? C.muted : C.grid, 'stroke-width': 1, 'stroke-opacity': v === 0 ? 0.5 : 1,
+    }));
+    const t = svgEl('text', { x: geom.left - 9, y: y + 3.5, 'text-anchor': 'end', 'font-size': 10, fill: C.muted, style: 'font-variant-numeric:tabular-nums' });
+    t.textContent = fmt.int(v);
+    svg.append(t);
+  }
+
+  // marcas: barras enquanto couberem; acima disso vira linha + area
+  const asBars = a.buckets.length <= 120 && band >= 3;
+  if (asBars) {
+    const bw = Math.min(24, Math.max(1.5, band - 2));
+    a.buckets.forEach((b, i) => {
+      if (!b.n) return;
+      const h = Math.max(2, baseline - yOf(b.n));
+      svg.append(svgEl('path', {
+        d: barPath(geom.left + i * band + (band - bw) / 2, baseline - h, bw, h),
+        fill: C.data,
+      }));
+    });
+  } else {
+    const pts = a.buckets.map((b, i) => [geom.left + i * band + band / 2, yOf(b.n)]);
+    const d = pts.map(([x, y], i) => `${i ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`).join('');
+    svg.append(svgEl('path', { d: `${d}L${pts.at(-1)[0].toFixed(1)} ${baseline}L${pts[0][0].toFixed(1)} ${baseline}Z`, fill: C.data, 'fill-opacity': 0.1 }));
+    svg.append(svgEl('path', { d, fill: 'none', stroke: C.data, 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+  }
+
+  // linhas de referencia
+  for (const [value, color, dash] of [[a.perBucket.mean, C.mean, '6 4'], [a.perBucket.median, C.median, '2 3']]) {
+    svg.append(svgEl('line', {
+      x1: geom.left, y1: yOf(value), x2: W - geom.right, y2: yOf(value),
+      stroke: color, 'stroke-width': 1.5, 'stroke-dasharray': dash,
+    }));
+  }
+
+  // eixo X
+  const every = Math.max(1, Math.ceil(a.buckets.length / Math.max(3, Math.floor(plotW / 90))));
+  a.buckets.forEach((b, i) => {
+    if (i % every) return;
+    const x = geom.left + i * band + band / 2;
+    if (x > W - geom.right - 16) return;
+    const t = svgEl('text', { x, y: baseline + 18, 'text-anchor': 'middle', 'font-size': 10, fill: C.muted });
+    t.textContent = bucketLabel(b, a.granularity);
+    svg.append(t);
+  });
+
+  // crosshair + alvo de ponteiro cobrindo TODA a faixa (ninguem precisa
+  // acertar uma barra de 3px)
+  const cross = svgEl('line', { y1: geom.top, y2: baseline, stroke: C.dim, 'stroke-width': 1, 'stroke-opacity': 0.45, visibility: 'hidden' });
+  const focusMark = svgEl('rect', { fill: '#fff', 'fill-opacity': 0.07, y: geom.top, height: plotH, visibility: 'hidden', rx: 2 });
+  svg.append(focusMark, cross);
+  svg.__cross = cross;
+  svg.__focus = focusMark;
+
+  const hit = svgEl('rect', { x: geom.left, y: geom.top, width: plotW, height: plotH, fill: 'transparent' });
+  hit.addEventListener('pointermove', (e) => {
+    const rect = svg.getBoundingClientRect();
+    const xView = ((e.clientX - rect.left) / rect.width) * W;
+    setHover(Math.max(0, Math.min(a.buckets.length - 1, Math.floor((xView - geom.left) / band))));
+  });
+  hit.addEventListener('pointerleave', () => setHover(-1));
+  svg.append(hit);
+
+  host.prepend(svg);
+}
+
+function setHover(index) {
+  const a = current;
+  const host = $('#plot');
+  const svg = host.querySelector('svg');
+  const tip = $('#tip');
+  if (!a || !svg || !geom.count) return;
+
+  state.hover = index;
+  if (index < 0) {
+    tip.dataset.open = 'false';
+    svg.__cross.setAttribute('visibility', 'hidden');
+    svg.__focus.setAttribute('visibility', 'hidden');
+    return;
+  }
+
+  const b = a.buckets[index];
+  const x = geom.left + index * geom.band + geom.band / 2;
+  svg.__cross.setAttribute('x1', x);
+  svg.__cross.setAttribute('x2', x);
+  svg.__cross.setAttribute('visibility', 'visible');
+  svg.__focus.setAttribute('x', geom.left + index * geom.band);
+  svg.__focus.setAttribute('width', geom.band);
+  svg.__focus.setAttribute('visibility', 'visible');
+
+  const when = a.granularity === 'day'
+    ? fmt.day(b.key)
+    : `${fmt.day(b.start)} – ${fmt.day(b.end)}`;
+
+  tip.textContent = '';
+  tip.append(el('div', { className: 't-when', textContent: when }));
+  tip.append(el('div', { className: 't-value', textContent: `${fmt.int(b.n)} commit${b.n === 1 ? '' : 's'}` }));
+  tip.append(el('div', { className: 't-when', textContent: `${fmt.int(b.days)} ${b.days === 1 ? 'dia' : 'dias'} no filtro` }));
+  tip.append(el('div', { className: 't-row' }, [
+    el('span', { className: 't-key', style: `background:${C.mean}` }),
+    el('span', {}, ['média/', unitLabel(a.granularity), ' ']),
+    el('b', { textContent: fmt.num(a.perBucket.mean) }),
+  ]));
+  tip.append(el('div', { className: 't-row' }, [
+    el('span', { className: 't-key', style: `background:${C.median}` }),
+    el('span', {}, ['mediana/', unitLabel(a.granularity), ' ']),
+    el('b', { textContent: fmt.num(a.perBucket.median) }),
+  ]));
+
+  tip.dataset.open = 'true';
+  const scale = host.clientWidth / geom.width;
+  const tipW = tip.offsetWidth;
+  const left = Math.max(0, Math.min(host.clientWidth - tipW, x * scale - tipW / 2));
+  tip.style.left = `${left}px`;
+  tip.style.top = '4px';
+}
+
+/** Teclado faz o mesmo que o hover — tooltip nunca é a única via. */
+function wirePlotKeyboard() {
+  const host = $('#plot');
+  host.addEventListener('keydown', (e) => {
+    if (!geom.count) return;
+    const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (step) {
+      e.preventDefault();
+      const base = state.hover < 0 ? (step > 0 ? -1 : geom.count) : state.hover;
+      setHover(Math.max(0, Math.min(geom.count - 1, base + step)));
+    } else if (e.key === 'Home') { e.preventDefault(); setHover(0); }
+    else if (e.key === 'End') { e.preventDefault(); setHover(geom.count - 1); }
+    else if (e.key === 'Escape') setHover(-1);
+  });
+  host.addEventListener('blur', () => setHover(-1));
+}
+
+function renderWeekdays(a) {
+  const host = $('#weekplot');
+  host.textContent = '';
+  const W = Math.max(320, host.clientWidth || 800);
+  const H = 142;
+  // top: 22 e o espaco do rotulo de valor em cima da barra mais alta — com 10
+  // o texto da barra maxima era cortado pelo topo do viewBox.
+  const left = 46, right = 12, top = 22, bottom = 26;
+  const plotW = W - left - right;
+  const plotH = H - top - bottom;
+  const rows = [1, 2, 3, 4, 5, 6, 0].map((wd) => a.weekday[wd]);
+  const max = Math.max(...rows.map((r) => r.mean), 0.001);
+  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img' });
+  const title = svgEl('title');
+  title.textContent = rows.map((r) => `${r.label} ${fmt.num(r.mean, 2)}`).join(', ');
+  svg.append(title);
+
+  svg.append(svgEl('line', { x1: left, y1: top + plotH, x2: W - right, y2: top + plotH, stroke: C.muted, 'stroke-width': 1, 'stroke-opacity': 0.5 }));
+
+  const band = plotW / rows.length;
+  rows.forEach((r, i) => {
+    const h = Math.max(r.mean > 0 ? 2 : 0, (r.mean / max) * plotH);
+    const bw = Math.min(48, band - 10);
+    const x = left + i * band + (band - bw) / 2;
+    if (h) svg.append(svgEl('path', { d: barPath(x, top + plotH - h, bw, h), fill: C.data, 'fill-opacity': r.days ? 1 : 0.25 }));
+    const lbl = svgEl('text', { x: x + bw / 2, y: top + plotH + 17, 'text-anchor': 'middle', 'font-size': 10, fill: C.muted });
+    lbl.textContent = r.label;
+    svg.append(lbl);
+    const val = svgEl('text', { x: x + bw / 2, y: top + plotH - h - 5, 'text-anchor': 'middle', 'font-size': 10.5, fill: C.dim });
+    val.textContent = r.days ? fmt.num(r.mean, 1) : '—';
+    svg.append(val);
+  });
+  host.append(svg);
+}
+
+function renderTable(a) {
+  const body = $('#table tbody');
+  body.textContent = '';
+  const rows = [...a.buckets].reverse();
+  for (const b of rows) {
+    body.append(el('tr', {}, [
+      el('td', { textContent: a.granularity === 'day' ? fmt.day(b.key) : `${fmt.day(b.start)} – ${fmt.day(b.end)}` }),
+      el('td', { textContent: fmt.int(b.n) }),
+      el('td', { textContent: fmt.int(b.days) }),
+      el('td', { textContent: fmt.num(b.days ? b.n / b.days : 0, 2) }),
+    ]));
+  }
+}
+
+function downloadCsv() {
+  const a = current;
+  if (!a) return;
+  const head = 'inicio,fim,commits,dias_no_filtro,media_por_dia';
+  const lines = a.buckets.map((b) => [b.start, b.end, b.n, b.days, (b.days ? b.n / b.days : 0).toFixed(3)].join(','));
+  const blob = new Blob([`${[head, ...lines].join('\n')}\n`], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = el('a', { href: url, download: `commits-${a.from}-a-${a.to}-${a.granularity}.csv` });
+  document.body.append(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>

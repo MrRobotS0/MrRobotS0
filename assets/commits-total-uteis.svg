@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 424" width="820" height="424" font-family="'JetBrains Mono','Fira Mono','Courier New',monospace" role="img" aria-label="Commits por mês — histórico completo, apenas dias úteis: 54 commits em 332 dias úteis, média 0,2 e mediana 0 por dia útil, pico de 10 commits em 17/06/2026, 15 dias ativos (5%), streak atual 0 e recorde 3.">
+  <defs>
+    <linearGradient id="border" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22C55E" stop-opacity="0.55"/>
+      <stop offset="0.5" stop-color="#064E3B" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#22C55E" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="plotclip"><rect x="69" y="200" width="722" height="158"/></clipPath>
+  </defs>
+  <!-- Sem animacao de entrada de proposito: este SVG e consumido como <img> no
+       README, onde um wipe por clip-path CSS pode nunca resolver e deixar o
+       grafico VAZIO. Dado tem que ser legivel no primeiro frame. -->
+
+  <rect x="1.5" y="1.5" width="817" height="421" rx="14" fill="#0D1117"/>
+  <rect x="1.5" y="1.5" width="817" height="421" rx="14" fill="none" stroke="url(#border)" stroke-width="1.5"/>
+  <path d="M1.5 15.5 A14 14 0 0 1 15.5 1.5 H804.5 A14 14 0 0 1 818.5 15.5 V46 H1.5 Z" fill="#161B22"/>
+  <line x1="1.5" y1="46" x2="818.5" y2="46" stroke="#22C55E" stroke-opacity="0.18" stroke-width="1"/>
+  <circle cx="28" cy="24" r="6" fill="#FF5F56"/><circle cx="50" cy="24" r="6" fill="#FFBD2E"/><circle cx="72" cy="24" r="6" fill="#27C93F"/>
+  <text x="410" y="29" font-size="13" fill="#8B949E" text-anchor="middle">guilherme@fsociety: ~/stats — histórico completo · dias úteis</text>
+
+  <text x="30" y="76" font-size="12.5">
+    <tspan fill="#22C55E" font-weight="700">guilherme@fsociety</tspan><tspan fill="#7B838D">:~$</tspan><tspan fill="#C9D1D9"> git log --since=always --group=month --weekdays=mon-fri | stats</tspan>
+  </text>
+
+  
+    <text x="30" y="108" font-size="10.5" letter-spacing="0.6" fill="#8B949E">COMMITS</text>
+    <text x="30" y="135" font-size="27" font-weight="700" fill="#22C55E">54</text>
+    <text x="30" y="151" font-size="10" fill="#7B838D">em 332 dias úteis</text>
+    <text x="182" y="108" font-size="10.5" letter-spacing="0.6" fill="#8B949E">MÉDIA/DIA ÚTIL</text>
+    <text x="182" y="135" font-size="20" font-weight="700" fill="#C9D1D9">0,2</text>
+    <text x="182" y="151" font-size="10" fill="#7B838D">ativos: 3,6</text>
+    <text x="334" y="108" font-size="10.5" letter-spacing="0.6" fill="#8B949E">MEDIANA/DIA ÚTIL</text>
+    <text x="334" y="135" font-size="20" font-weight="700" fill="#C9D1D9">0</text>
+    <text x="334" y="151" font-size="10" fill="#7B838D">ativos: 2</text>
+    <text x="486" y="108" font-size="10.5" letter-spacing="0.6" fill="#8B949E">PICO EM UM DIA</text>
+    <text x="486" y="135" font-size="20" font-weight="700" fill="#C9D1D9">10</text>
+    <text x="486" y="151" font-size="10" fill="#7B838D">17/06/2026</text>
+    <text x="638" y="108" font-size="10.5" letter-spacing="0.6" fill="#8B949E">DIAS ATIVOS</text>
+    <text x="638" y="135" font-size="20" font-weight="700" fill="#C9D1D9">15</text>
+    <text x="638" y="151" font-size="10" fill="#7B838D">5% · streak 0</text>
+
+  <line x1="30" y1="188" x2="790" y2="188" stroke="#1F2630" stroke-width="1"/>
+  <text x="30" y="208" font-size="11" fill="#8B949E">commits por mês</text>
+  
+    <line x1="556.2" y1="204.5" x2="574.2" y2="204.5" stroke="#38BDF8" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="580.2" y="208" font-size="10.5" fill="#8B949E">média/mês 3,4</text>
+    <line x1="684.1" y1="204.5" x2="702.1" y2="204.5" stroke="#F472B6" stroke-width="2" stroke-dasharray="2 3"/>
+    <text x="708.1" y="208" font-size="10.5" fill="#8B949E">mediana/mês 0</text>
+
+  <g><line x1="70" y1="356" x2="790" y2="356" stroke="#7B838D" stroke-width="1" stroke-opacity="0.5"/><text x="60" y="359.5" font-size="10" fill="#7B838D" text-anchor="end" style="font-variant-numeric:tabular-nums">0</text><line x1="70" y1="312" x2="790" y2="312" stroke="#1F2630" stroke-width="1" /><text x="60" y="315.5" font-size="10" fill="#7B838D" text-anchor="end" style="font-variant-numeric:tabular-nums">10</text><line x1="70" y1="268" x2="790" y2="268" stroke="#1F2630" stroke-width="1" /><text x="60" y="271.5" font-size="10" fill="#7B838D" text-anchor="end" style="font-variant-numeric:tabular-nums">20</text><line x1="70" y1="224" x2="790" y2="224" stroke="#1F2630" stroke-width="1" /><text x="60" y="227.5" font-size="10" fill="#7B838D" text-anchor="end" style="font-variant-numeric:tabular-nums">30</text></g>
+  <g clip-path="url(#plotclip)"><path d="M80.5 356V355.6a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M575.5 356V263.2a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M620.5 356V316a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M665.5 356V302.8a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M710.5 356V324.8a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/></g>
+  <g><line x1="70" y1="341.2" x2="790" y2="341.2" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="6 4"/><line x1="70" y1="356" x2="790" y2="356" stroke="#F472B6" stroke-width="1.5" stroke-dasharray="2 3"/></g>
+  <g><text x="92.5" y="374" font-size="10" fill="#7B838D" text-anchor="middle">jun/25</text><text x="182.5" y="374" font-size="10" fill="#7B838D" text-anchor="middle">ago/25</text><text x="272.5" y="374" font-size="10" fill="#7B838D" text-anchor="middle">out/25</text><text x="362.5" y="374" font-size="10" fill="#7B838D" text-anchor="middle">dez/25</text><text x="452.5" y="374" font-size="10" fill="#7B838D" text-anchor="middle">fev/26</text><text x="542.5" y="374" font-size="10" fill="#7B838D" text-anchor="middle">abr/26</text><text x="632.5" y="374" font-size="10" fill="#7B838D" text-anchor="middle">jun/26</text><text x="722.5" y="374" font-size="10" fill="#7B838D" text-anchor="middle">ago/26</text></g>
+
+  <text x="30" y="406" font-size="10" fill="#7B838D">dias úteis (seg–sex)  ·  agrupado por mês  ·  só públicos · 3.427 privados fora  ·  melhor sequência 3</text>
+</svg>

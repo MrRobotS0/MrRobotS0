@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 236" width="820" height="236" font-family="'JetBrains Mono','Fira Mono','Courier New',monospace" role="img" aria-label="Sequência de contribuições: 3.490 contribuições desde 16/03/2023, sequência atual de 4 dias (14/09 — 17/09/2026) e recorde de 5 dias (11/05 — 15/05/2026).">
+  <defs><linearGradient id="border" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22C55E" stop-opacity="0.55"/>
+      <stop offset="0.5" stop-color="#064E3B" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#22C55E" stop-opacity="0.15"/>
+    </linearGradient></defs>
+  <!-- Sem animacao de entrada, mesma razao do painel de commits: e consumido
+       como <img> no README, entao o dado tem que estar legivel no 1o frame. -->
+
+  <rect x="1.5" y="1.5" width="817" height="233" rx="14" fill="#0D1117"/>
+  <rect x="1.5" y="1.5" width="817" height="233" rx="14" fill="none" stroke="url(#border)" stroke-width="1.5"/>
+  <path d="M1.5 15.5 A14 14 0 0 1 15.5 1.5 H804.5 A14 14 0 0 1 818.5 15.5 V46 H1.5 Z" fill="#161B22"/>
+  <line x1="1.5" y1="46" x2="818.5" y2="46" stroke="#22C55E" stroke-opacity="0.18" stroke-width="1"/>
+  <circle cx="28" cy="24" r="6" fill="#FF5F56"/><circle cx="50" cy="24" r="6" fill="#FFBD2E"/><circle cx="72" cy="24" r="6" fill="#27C93F"/>
+  <text x="410" y="29" font-size="13" fill="#8B949E" text-anchor="middle">guilherme@fsociety: ~/stats — sequência</text>
+
+  <text x="30" y="76" font-size="12.5">
+    <tspan fill="#22C55E" font-weight="700">guilherme@fsociety</tspan><tspan fill="#7B838D">:~$</tspan><tspan fill="#C9D1D9"> gh api graphql --contributions | streak</tspan>
+  </text>
+
+  <line x1="283.3" y1="104" x2="283.3" y2="208" stroke="#1F2630" stroke-width="1"/>
+  <line x1="536.7" y1="104" x2="536.7" y2="208" stroke="#1F2630" stroke-width="1"/>
+
+  
+    <text x="156.7" y="118" font-size="10.5" letter-spacing="0.6" fill="#8B949E" text-anchor="middle">CONTRIBUIÇÕES</text>
+    <text x="156.7" y="163" font-size="30" font-weight="700" fill="#C9D1D9" text-anchor="middle" style="font-variant-numeric:tabular-nums">3.490</text>
+    <text x="156.7" y="196" font-size="10" fill="#7B838D" text-anchor="middle">desde 16/03/2023</text>
+
+  <text x="410" y="118" font-size="10.5" letter-spacing="0.6" fill="#8B949E" text-anchor="middle">SEQUÊNCIA ATUAL</text>
+  
+    <circle cx="410" cy="155" r="31" fill="none" stroke="#33574A" stroke-width="6"/>
+    <circle cx="410" cy="155" r="31" fill="none" stroke="#22C55E" stroke-width="6" stroke-linecap="round" pathLength="100" stroke-dasharray="80 20" transform="rotate(-90 410 155)"/>
+    <text x="410" y="165" font-size="27" font-weight="700" fill="#22C55E" text-anchor="middle" style="font-variant-numeric:tabular-nums">4</text>
+  <text x="410" y="196" font-size="10" fill="#7B838D" text-anchor="middle">14/09 — 17/09/2026</text>
+
+  
+    <text x="663.3" y="118" font-size="10.5" letter-spacing="0.6" fill="#8B949E" text-anchor="middle">RECORDE</text>
+    <text x="663.3" y="163" font-size="30" font-weight="700" fill="#C9D1D9" text-anchor="middle" style="font-variant-numeric:tabular-nums">5</text>
+    <text x="663.3" y="196" font-size="10" fill="#7B838D" text-anchor="middle">11/05 — 15/05/2026</text>
+
+  <text x="30" y="218" font-size="10" fill="#7B838D">sequência = dias seguidos com ao menos uma contribuição  ·  98 dias ativos  ·  atualizado 17/09/2026</text>
+</svg>
