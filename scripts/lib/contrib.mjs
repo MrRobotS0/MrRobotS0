@@ -15,16 +15,19 @@
  * historico de cada repo) — por isso os numeros diferem, e de proposito.
  */
 
-import { shiftDay, daysBetween, dayToMs, fmt } from './stats.mjs';
+import { shiftDay, daysBetween, dayToMs, fmt, MONTH_LABELS } from './stats.mjs';
 import {
-  renderPanel, esc, r1, terminalChrome, promptLine, footerLine,
+  renderPanel, esc, r1, kpi, textW, terminalChrome, promptLine, footerLine,
   BORDER_DEF, CHART_COLORS as C,
 } from './svg.mjs';
 
 const W = 820;
 const PAD = 30;
-const HEIGHT = 236;
+const HEIGHT = 300;
 const INNER = W - PAD * 2;
+
+/** Quantos dias a fita de sequencia mostra. */
+const STRIP_DAYS = 90;
 
 /** Quantos dias o grafico de atividade cobre (o recorte "ultimo mes"). */
 export const ACTIVITY_DAYS = 31;
@@ -90,49 +93,101 @@ function rangeLabel(start, end) {
   return `${sameYear ? fmt.dayShort(start) : fmt.day(start)} — ${fmt.day(end)}`;
 }
 
-/** Uma coluna do painel: rotulo em cima, numero no meio, periodo embaixo. */
-function column(cx, { label, value, note }) {
-  return `
-    <text x="${r1(cx)}" y="118" font-size="10.5" letter-spacing="0.6" fill="${C.inkDim}" text-anchor="middle">${esc(label)}</text>
-    <text x="${r1(cx)}" y="163" font-size="30" font-weight="700" fill="${C.ink}" text-anchor="middle" style="font-variant-numeric:tabular-nums">${esc(value)}</text>
-    <text x="${r1(cx)}" y="196" font-size="10" fill="${C.inkMuted}" text-anchor="middle">${esc(note)}</text>`;
+/**
+ * Fita dos ultimos 90 dias: um retangulo por dia, aceso se teve contribuicao.
+ *
+ * BINARIO de proposito. Intensidade e a pergunta do painel de atividade, que
+ * fica logo acima; aqui a pergunta e a SEQUENCIA, e pintar 5 tons de verde so
+ * atrapalharia enxergar onde uma corrida comeca e termina. Como efeito
+ * colateral a fita explica o recorde: as corridas morrem no fim de semana, e e
+ * por isso que 5 (seg a sex) e o teto.
+ */
+function strip(contributions, current, top) {
+  const to = contributions.lastDay;
+  const from = shiftDay(to, -(STRIP_DAYS - 1));
+  const step = INNER / STRIP_DAYS;
+  const cellW = r1(step - 1.6);
+  const cellH = 14;
+
+  let cells = '';
+  let months = '';
+  for (let i = 0; i < STRIP_DAYS; i += 1) {
+    const day = shiftDay(from, i);
+    const x = r1(PAD + i * step);
+    const on = Boolean(contributions.days[day]);
+    cells += `<rect x="${x}" y="${top}" width="${cellW}" height="${cellH}" rx="2" fill="${on ? C.data : C.grid}"/>`;
+    // Rotulo de mes na primeira celula e em todo dia 1 — mesma ancoragem do
+    // quadro de contribuicoes do GitHub, que e onde o olho ja procura.
+    if (i === 0 || day.slice(8) === '01') {
+      months += `<text x="${x}" y="${top - 8}" font-size="10" fill="${C.inkMuted}">${MONTH_LABELS[Number(day.slice(5, 7)) - 1]}</text>`;
+    }
+  }
+
+  // Sublinhado na corrida atual: o "voce esta aqui" da fita. Fica a ESQUERDA
+  // porque a corrida atual termina em hoje, colada na borda direita.
+  let mark = '';
+  if (current.len) {
+    const last = daysBetween(from, current.end) - 1;
+    const first = Math.max(0, daysBetween(from, current.start) - 1);
+    if (last >= 0) {
+      const x0 = PAD + first * step;
+      const x1 = PAD + last * step + cellW;
+      const y = top + cellH + 8;
+      const label = 'sequência atual';
+      mark = `<line x1="${r1(x0)}" y1="${y}" x2="${r1(x1)}" y2="${y}" stroke="${C.accent}" stroke-width="2" stroke-linecap="round"/>
+    <text x="${r1(x0 - 8)}" y="${y + 4}" font-size="10" fill="${C.inkDim}" text-anchor="end">${esc(label)}</text>`;
+    }
+  }
+
+  return { cells, months, mark };
+}
+
+/** Legenda da fita: quadradinho + texto, pro verde nao ser a unica pista. */
+function swatch(x, y, color, text) {
+  return `<rect x="${r1(x)}" y="${r1(y - 8.5)}" width="9" height="9" rx="2" fill="${color}"/>
+    <text x="${r1(x + 15)}" y="${y}" font-size="10.5" fill="${C.inkDim}">${esc(text)}</text>`;
 }
 
 /**
- * Anel: sequencia atual medida contra o RECORDE. O numero fica dentro e o
- * periodo embaixo, entao o anel e reforco — quem nao distingue a cor le o
- * mesmo dado no texto.
+ * Painel de sequencia. Mesma estrutura do painel de atividade — fila de tiles
+ * a esquerda, um heroi, divisor, e o desenho ocupando a largura inteira —
+ * porque os dois ficam um embaixo do outro e precisam ler como o mesmo
+ * terminal, nao como dois widgets de origens diferentes.
  */
-function ring(cx, cy, r, value, target) {
-  const pct = target > 0 ? Math.min(100, (value / target) * 100) : 0;
-  // dash de comprimento zero com linecap round ainda desenha um ponto: so
-  // arco quando ha sequencia.
-  const arc = pct > 0
-    ? `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${C.data}" stroke-width="6" stroke-linecap="round" pathLength="100" stroke-dasharray="${r1(pct)} ${r1(100 - pct)}" transform="rotate(-90 ${cx} ${cy})"/>`
-    : '';
-  return `
-    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${C.track}" stroke-width="6"/>
-    ${arc}
-    <text x="${cx}" y="${cy + 10}" font-size="27" font-weight="700" fill="${C.accent}" text-anchor="middle" style="font-variant-numeric:tabular-nums">${esc(fmt.int(value))}</text>`;
-}
-
-/** Painel de sequencia: total, sequencia atual (anel) e recorde. */
 export function renderStreak(data) {
   const c = data.contributions;
   const s = streakOf(c);
 
-  const cols = [PAD + INNER / 6, W / 2, W - PAD - INNER / 6];
-  const sep = [PAD + INNER / 3, W - PAD - INNER / 3];
+  const tiles = [
+    {
+      label: 'SEQUÊNCIA ATUAL',
+      value: fmt.int(s.current.len),
+      note: rangeLabel(s.current.start, s.current.end),
+      hero: true,
+    },
+    { label: 'RECORDE', value: fmt.int(s.longest.len), note: rangeLabel(s.longest.start, s.longest.end) },
+    { label: 'CONTRIBUIÇÕES', value: fmt.int(s.total), note: `desde ${fmt.day(c.firstDay)}` },
+    { label: 'DIAS ATIVOS', value: fmt.int(s.activeDays), note: 'com ≥1 contribuição' },
+  ];
+  const tileW = INNER / tiles.length;
+  const kpis = tiles.map((t, i) => kpi(PAD + i * tileW, 108, tileW, t)).join('');
 
-  const aria = `Sequência de contribuições: ${fmt.int(s.total)} contribuições desde ${fmt.day(c.firstDay)}, `
-    + `sequência atual de ${fmt.int(s.current.len)} dias (${rangeLabel(s.current.start, s.current.end)}) `
-    + `e recorde de ${fmt.int(s.longest.len)} dias (${rangeLabel(s.longest.start, s.longest.end)}).`;
+  const fita = strip(c, s.current, 228);
 
-  // A regra do "hoje nao quebra a sequencia" mora no <details> do README: nao
-  // cabe aqui sem empurrar pra fora as notas que mudam a cada build.
+  // Legenda alinhada a direita, no mesmo lugar em que o painel de atividade
+  // poe as chaves de media e mediana. Uma entrada so: a celula apagada e
+  // escura demais pra virar amostra legivel, e "sem contribuicao" e o que
+  // sobra — nao precisa de swatch pra ser entendido.
+  const comX = W - PAD - (15 + textW('dia com contribuição', 10.5));
+
+  const aria = `Sequência de contribuições: sequência atual de ${fmt.int(s.current.len)} dias `
+    + `(${rangeLabel(s.current.start, s.current.end)}), recorde de ${fmt.int(s.longest.len)} dias `
+    + `(${rangeLabel(s.longest.start, s.longest.end)}), ${fmt.int(s.total)} contribuições desde ${fmt.day(c.firstDay)} `
+    + `em ${fmt.int(s.activeDays)} dias ativos. Abaixo, os últimos ${STRIP_DAYS} dias, um por dia, acesos nos dias com contribuição.`;
+
   const footer = footerLine([
     'sequência = dias seguidos com ao menos uma contribuição',
-    `${fmt.int(s.activeDays)} dias ativos`,
+    'hoje só quebra quando o dia termina',
     `atualizado ${fmt.day(c.lastDay)}`,
   ], INNER);
 
@@ -145,24 +200,15 @@ export function renderStreak(data) {
 
   ${promptLine(PAD, 76, 'gh api graphql --contributions | streak')}
 
-  <line x1="${r1(sep[0])}" y1="104" x2="${r1(sep[0])}" y2="208" stroke="${C.grid}" stroke-width="1"/>
-  <line x1="${r1(sep[1])}" y1="104" x2="${r1(sep[1])}" y2="208" stroke="${C.grid}" stroke-width="1"/>
+  ${kpis}
 
-  ${column(cols[0], {
-    label: 'CONTRIBUIÇÕES',
-    value: fmt.int(s.total),
-    note: `desde ${fmt.day(c.firstDay)}`,
-  })}
+  <line x1="${PAD}" y1="188" x2="${W - PAD}" y2="188" stroke="${C.grid}" stroke-width="1"/>
+  <text x="${PAD}" y="206" font-size="11" fill="${C.inkDim}">últimos ${STRIP_DAYS} dias</text>
+  ${swatch(comX, 206, C.data, 'dia com contribuição')}
 
-  <text x="${cols[1]}" y="118" font-size="10.5" letter-spacing="0.6" fill="${C.inkDim}" text-anchor="middle">SEQUÊNCIA ATUAL</text>
-  ${ring(cols[1], 155, 31, s.current.len, s.longest.len)}
-  <text x="${cols[1]}" y="196" font-size="10" fill="${C.inkMuted}" text-anchor="middle">${esc(rangeLabel(s.current.start, s.current.end))}</text>
-
-  ${column(cols[2], {
-    label: 'RECORDE',
-    value: fmt.int(s.longest.len),
-    note: rangeLabel(s.longest.start, s.longest.end),
-  })}
+  <g>${fita.months}</g>
+  <g>${fita.cells}</g>
+  ${fita.mark}
 
   <text x="${PAD}" y="${HEIGHT - 18}" font-size="10" fill="${C.inkMuted}">${esc(footer)}</text>
 </svg>
