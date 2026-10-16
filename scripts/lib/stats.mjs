@@ -143,14 +143,23 @@ export function describe(values) {
  * Streaks contados SOBRE A SERIE FILTRADA: com filtro de dias uteis, um fim de
  * semana sem commit nao quebra a sequencia (ele nem existe na serie). E a
  * leitura que importa pra "streak de dias uteis".
+ *
+ * `openDay` (o dia da coleta) ainda esta aberto: zerado, ele nao quebra a
+ * sequencia atual — mesma regra do painel de sequencia (contrib.mjs). Sem isso
+ * a coleta da madrugada mostrava "streak 0" ao lado de um painel dizendo 3.
  */
-export function streaks(series) {
-  let longest = 0, run = 0;
+export function streaks(series, openDay = null) {
+  let longest = 0, run = 0, beforeOpen = 0;
   for (const p of series) {
     if (p.n > 0) { run += 1; if (run > longest) longest = run; }
-    else run = 0;
+    else {
+      if (p.day === openDay) beforeOpen = run;
+      run = 0;
+    }
   }
-  return { current: run, longest };
+  const last = series[series.length - 1];
+  const current = last && last.day === openDay && last.n === 0 ? beforeOpen : run;
+  return { current, longest };
 }
 
 /** Distribuicao por dia da semana. */
@@ -189,7 +198,7 @@ export function analyze(data, opts = {}) {
     perDay: describe(values),
     perActive: describe(active),
     perBucket: describe(buckets.map((b) => b.n)),
-    streaks: streaks(series),
+    streaks: streaks(series, data.lastDay),
     weekday: byWeekday(series),
     peak,
   };

@@ -14,7 +14,7 @@
 <br>
 
 <!-- ╭──────────────────────────  META  ──────────────────────────╮ -->
-<img src="https://img.shields.io/badge/Brasil-22C55E?style=flat-square&logo=googlemaps&logoColor=0D1117&labelColor=0D1117&color=22C55E" alt="Brasil" />
+<img src="https://img.shields.io/badge/Brasil-161B22?style=flat-square&logo=googlemaps&logoColor=22C55E&labelColor=0D1117" alt="Brasil" />
 &nbsp;
 <img src="https://img.shields.io/badge/UTC--3-161B22?style=flat-square&logo=clockify&logoColor=22C55E&labelColor=0D1117" alt="UTC-3" />
 &nbsp;
