@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 424" width="820" height="424" font-family="'JetBrains Mono','Fira Mono','Courier New',monospace" role="img" aria-label="Commits por semana — desde mai/2026: 58 commits em 178 dias, média 0,3 e mediana 0 por dia, pico de 10 commits em 17/06/2026, 16 dias ativos (9%), streak atual 0 e recorde 3.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 424" width="820" height="424" font-family="'JetBrains Mono','Fira Mono','Courier New',monospace" role="img" aria-label="Commits por semana — desde mai/2026: 58 commits em 179 dias, média 0,3 e mediana 0 por dia, pico de 10 commits em 17/06/2026, 16 dias ativos (9%), streak atual 0 e recorde 3.">
   <defs>
     <linearGradient id="border" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#22C55E" stop-opacity="0.55"/>
@@ -25,7 +25,7 @@
   
     <text x="30" y="108" font-size="10.5" letter-spacing="0.6" fill="#8B949E">COMMITS</text>
     <text x="30" y="135" font-size="27" font-weight="700" fill="#22C55E">58</text>
-    <text x="30" y="151" font-size="10" fill="#7B838D">em 178 dias</text>
+    <text x="30" y="151" font-size="10" fill="#7B838D">em 179 dias</text>
     <text x="182" y="108" font-size="10.5" letter-spacing="0.6" fill="#8B949E">MÉDIA/DIA</text>
     <text x="182" y="135" font-size="20" font-weight="700" fill="#C9D1D9">0,3</text>
     <text x="182" y="151" font-size="10" fill="#7B838D">ativos: 3,6</text>
@@ -43,14 +43,14 @@
   <text x="30" y="208" font-size="11" fill="#8B949E">commits por semana</text>
   
     <line x1="556.2" y1="204.5" x2="574.2" y2="204.5" stroke="#38BDF8" stroke-width="2" stroke-dasharray="6 4"/>
-    <text x="580.2" y="208" font-size="10.5" fill="#8B949E">média/sem 2,2</text>
+    <text x="580.2" y="208" font-size="10.5" fill="#8B949E">média/sem 2,1</text>
     <line x1="684.1" y1="204.5" x2="702.1" y2="204.5" stroke="#F472B6" stroke-width="2" stroke-dasharray="2 3"/>
     <text x="708.1" y="208" font-size="10.5" fill="#8B949E">mediana/sem 0</text>
 
   <g><line x1="70" y1="356" x2="790" y2="356" stroke="#7B838D" stroke-width="1" stroke-opacity="0.5"/><text x="60" y="359.5" font-size="10" fill="#7B838D" text-anchor="end" style="font-variant-numeric:tabular-nums">0</text><line x1="70" y1="323" x2="790" y2="323" stroke="#1F2630" stroke-width="1" /><text x="60" y="326.5" font-size="10" fill="#7B838D" text-anchor="end" style="font-variant-numeric:tabular-nums">4</text><line x1="70" y1="290" x2="790" y2="290" stroke="#1F2630" stroke-width="1" /><text x="60" y="293.5" font-size="10" fill="#7B838D" text-anchor="end" style="font-variant-numeric:tabular-nums">8</text><line x1="70" y1="257" x2="790" y2="257" stroke="#1F2630" stroke-width="1" /><text x="60" y="260.5" font-size="10" fill="#7B838D" text-anchor="end" style="font-variant-numeric:tabular-nums">12</text><line x1="70" y1="224" x2="790" y2="224" stroke="#1F2630" stroke-width="1" /><text x="60" y="227.5" font-size="10" fill="#7B838D" text-anchor="end" style="font-variant-numeric:tabular-nums">16</text></g>
-  <g clip-path="url(#plotclip)"><path d="M99.5 356V302.3a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M127.2 356V236.3a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M265.7 356V277.5a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M348.8 356V277.5a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M376.5 356V351.8a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M431.8 356V343.5a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M459.5 356V318.8a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M514.9 356V335.3a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M625.7 356V327a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M736.5 356V351.8a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/></g>
-  <g><line x1="70" y1="337.6" x2="790" y2="337.6" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="6 4"/><line x1="70" y1="356" x2="790" y2="356" stroke="#F472B6" stroke-width="1.5" stroke-dasharray="2 3"/></g>
-  <g><text x="83.8" y="374" font-size="10" fill="#7B838D" text-anchor="middle">01/05</text><text x="194.6" y="374" font-size="10" fill="#7B838D" text-anchor="middle">25/05</text><text x="305.4" y="374" font-size="10" fill="#7B838D" text-anchor="middle">22/06</text><text x="416.2" y="374" font-size="10" fill="#7B838D" text-anchor="middle">20/07</text><text x="526.9" y="374" font-size="10" fill="#7B838D" text-anchor="middle">17/08</text><text x="637.7" y="374" font-size="10" fill="#7B838D" text-anchor="middle">14/09</text><text x="748.5" y="374" font-size="10" fill="#7B838D" text-anchor="middle">12/10</text></g>
+  <g clip-path="url(#plotclip)"><path d="M98 356V302.3a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M124.7 356V236.3a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M258 356V277.5a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M338 356V277.5a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M364.7 356V351.8a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M418 356V343.5a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M444.7 356V318.8a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M498 356V335.3a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M604.7 356V327a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/><path d="M711.3 356V351.8a4 4 0 0 1 4 -4h16a4 4 0 0 1 4 4V356Z" fill="#22C55E"/></g>
+  <g><line x1="70" y1="338.3" x2="790" y2="338.3" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="6 4"/><line x1="70" y1="356" x2="790" y2="356" stroke="#F472B6" stroke-width="1.5" stroke-dasharray="2 3"/></g>
+  <g><text x="83.3" y="374" font-size="10" fill="#7B838D" text-anchor="middle">01/05</text><text x="190" y="374" font-size="10" fill="#7B838D" text-anchor="middle">25/05</text><text x="296.7" y="374" font-size="10" fill="#7B838D" text-anchor="middle">22/06</text><text x="403.3" y="374" font-size="10" fill="#7B838D" text-anchor="middle">20/07</text><text x="510" y="374" font-size="10" fill="#7B838D" text-anchor="middle">17/08</text><text x="616.7" y="374" font-size="10" fill="#7B838D" text-anchor="middle">14/09</text><text x="723.3" y="374" font-size="10" fill="#7B838D" text-anchor="middle">12/10</text></g>
 
-  <text x="30" y="406" font-size="10" fill="#7B838D">todos os dias  ·  agrupado por semana  ·  só públicos · 6.120 privados fora  ·  melhor sequência 3  ·  atualizado 25/10/2026</text>
+  <text x="30" y="406" font-size="10" fill="#7B838D">todos os dias  ·  agrupado por semana  ·  só públicos · 6.120 privados fora  ·  melhor sequência 3  ·  atualizado 26/10/2026</text>
 </svg>
